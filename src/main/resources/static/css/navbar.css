@@ -1,0 +1,9 @@
+*{ margin:0px; padding:0px; }
+
+.nav-head{ background-color: #F2F2F2; width: 100% !important; min-width: 1300px; margin: 0 auto; border-bottom:1px solid #2B8FCE; }
+.nav-head-content{ width:1300px; margin:0 auto; font-size:13px; padding:6px; }
+.nav-content-left span, #nav-content-left a{ margin-right:3px; }
+.nav-welcome-title{ font-weight:bold; }
+
+.nav-content-right{ float:right; }
+.nav-content-right a{ margin-right:5px; }

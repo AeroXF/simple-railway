@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Railway website</title>
+	<!-- <link rel="stylesheet" type="text/css" href="../static/css/jpetstore.css" th:href="@{/css/jpetstore.css}"/> -->
+	<link rel="stylesheet" th:href="@{/css/navbar.css}"/>
+	<script type="text/javascript" th:src="@{/3rdparty/jquery/jquery.min.js}"></script>
+</head>
+<body>
+	<div class="nav-head">
+	    <div class="nav-head-content">
+	        <span class="nav-content-left">
+	            <span class="nav-welcome-title">欢迎来到simple12306客运服务</span>   
+	        </span>
+	        <span class="nav-content-right">
+	            <a class="nav-login-link" href="index">首页</a>
+	            |
+	            <a class="nav-login-link" href="home">登录</a>
+	            |
+	            <a class="nav-login-link" href="register">注册</a>
+	        </span>
+	    </div>
+	</div>
+
+	<div layout:fragment="content">
+	
+	</div>
+</body>
+</html>

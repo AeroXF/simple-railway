@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+    layout:decorator="layout">
+<head>
+	<title>铁路服务中心</title>
+
+	<link rel="icon" th:href="@{/images/butterfly.ico}" type="image/x-icon"/>
+	<link rel="stylesheet" th:href="@{/3rdparty/buttons/buttons.css}"/>
+    <link rel="stylesheet" th:href="@{/3rdparty/font-awesome-4.5.0/css/font-awesome.css}"/>
+    <link rel="stylesheet" th:href="@{/css/index.css}"/>
+    <script th:src="@{/3rdparty/jquery/jquery.min.js}"></script>
+    <script th:src="@{/js/util/util.js}"></script>
+    <script th:src="@{/js/index.js}"></script>
+</head>
+<body>
+	<div layout:fragment="content">
+		<div class="main-content-div">
+	        <div class="main-content-inner-div-left">
+		        <div class="main-content-title">
+		            <i style="margin-left:5px;">资讯列表</i>
+		            <i style="float:right;margin-right:20px;">2016年7月13日</i>
+		        </div>
+		        
+		        <div class="main-content-inner-div-left-list"></div>
+	        </div>
+	        
+	        <div class="main-content-inner-div-right">
+	            <input type="text" id="railway_search_text" placeholder="请输入搜索条件"/>
+	            <a href="http://www.bootcss.com/" class="button button-rounded button-small">
+	                <i class="fa fa-search" aria-hidden="true"></i>&nbsp;&nbsp;搜索
+	            </a>
+	            
+	            <div class="content-tab-div">
+	                <div class="tab-detail-group">
+		                <span id="dynamic_search_span" style="margin-left:10px;">余票动态查询</span>
+		                <span id="ticket_ques_span">网上购票常见问题</span>
+		                <span id="common_sense_span">铁路常识</span>
+		                <span id="freight_ques_span">货运办理常见问题</span>
+	                </div>
+	                
+	                <br />
+	                
+	                <div id="index_right_content"></div>
+	            </div>
+	        </div>
+	    </div>
+    </div>
+</body>
+</html>

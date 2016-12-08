@@ -1,0 +1,15 @@
+.main-content-div{ width:1300px; margin:0 auto; font-size:13px; padding:6px; }
+
+.main-content-inner-div-left{ width:310px; float:left;}
+.main-content-title{ background-color:#2B8FCE; margin-top:10px; border-radius:5px 5px 0 0; height:30px; font-size:13px; line-height:30px; color:#fff; padding-left:20px; font-weight:bold; width:282px; }
+.main-content-inner-div-left-list{ border-left:1px solid #2B8FCE; border-right:1px solid #2B8FCE; border-bottom:1px solid #2B8FCE; width:300px; background-color:#f0f0f0; }
+.main-content-inner-div-left-list p{ margin-left:10px; height:24px; line-height:24px; }
+.main-content-inner-div-right{ margin-top:20px; height:750px; width:970px; margin-left:320px; }
+
+#railway_search_text{ height:28px; width:700px; margin-left:50px; line-height:28px; }
+.content-tab-div{ margin-top:20px; margin-left:50px; }
+
+.tab-detail-group{ background:#2B8FCE; }
+.tab-detail-group span{ background-color:#2B8FCE; height:36px; line-height:36px; font-size:14px; font-weight:bold; display:inline-block; width:180px; text-align:center; }
+.tab-detail-group span:hover{ cursor:pointer; }
+span.tab-detail-group-active{ background-color:#fff; border-top:3px solid red; }
