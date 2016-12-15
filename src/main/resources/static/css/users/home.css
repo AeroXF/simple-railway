@@ -1,0 +1,135 @@
+*{ margin:0px; padding:0px; }
+
+#home_header{ background-color:#F2F2F2; width:100% !important; min-width:1300px; margin:0 auto; border-bottom:1px solid #2B8FCE; }
+
+.home-header-content{ width:1300px; margin:0 auto;font-size:13px; padding:6px; }
+.home-header-content-left font{ font-weight:bold; }
+.home-header-content-left font:hover{ cursor:pointer; color:#2B8FCE; }
+.home-header-content-right{ float:right; }
+.home-header-content-right a{ width:120px; }
+span.home-header-content-right font:first-child { font-weight:200; }
+.home-header-content-right .home-link{ margin-left:5px; margin-right:5px; }
+.home-header-content-right .home-link:hover{ color:#2B8FCE; cursor:pointer; }
+
+#home_body{ width:1300px; margin:0 auto;}
+
+/** 1. 我的simple12306模块  **/
+#home_current_position{ line-height:50px; }
+#home_current_position .position-font{ font-weight:600; }
+#home_body_left{ width:200px; height:800px; float:left; }
+#home_body_right{ margin-left:220px; width:1000px; }
+
+.home-content-left-head{ background-color:#2B8FCE; border-radius:6px 6px 0 0; height:36px; font-size:13px; line-height:36px; color:#fff; padding-left:20px; font-weight:bold; width:182px;}
+.home-content-left-body{ border-left:1px solid #2B8FCE; border-right:1px solid #2B8FCE; border-bottom:1px solid #2B8FCE; width:200px; background-color:#EEF1F8;}
+.home-content-left-body p{ font-size:14px; line-height:50px; font-weight:400; padding-left:10px; border-bottom:1px solid #bbb; }
+.home-content-left-body p.model-active{background-color:#FFF; border-left:4px solid #66C8E8; color:#66C8E8; }
+.home-content-left-body p:hover{ background-color:#FFF; color:#66C8E8; cursor:pointer; }
+.home-content-left-body p.sub-link{ font-size:13px; font-weight:300; padding-left:30px; }
+
+.home-content-right-head{ background-color:#2B8FCE; border-radius:6px 6px 0 0; height:36px; font-size:13px; line-height:36px; color:#fff; padding-left:20px; font-weight:bold; width:1062px; }
+.home-content-right-body{ border-left:1px solid #2B8FCE; border-right:1px solid #2B8FCE; border-bottom:1px solid #2B8FCE; width:1080px; background:url(../../../resources/images/bg_train.png) bottom right no-repeat; height:500px; padding-top:20px; }
+.home-content-right-body p{ margin-left:20px; line-height:36px; font-size:14px; }
+.home-content-right-body p:first-child{ font-size:24px; line-height:50px; font-weight:500; }
+.home-content-right-body .left-icon{ float:left; margin-left:20px; width:200px; height:200px; }
+.home-content-right-body .left-icon span{ display:block; width:82px; height:92px; background:url(../../../resources/images/icons.png) no-repeat; background-position:0 -300px; float:right; margin-top:20px; margin-right:20px; }
+.home-content-right-body .right-content{ width: 600px; margin-left: 220px;}
+
+/** 未完成订单 **/
+.order-unfinished-head{ background-color:#2B8FCE; border-radius:6px 6px 0 0; height:36px; font-size:13px; line-height:36px; color:#fff; padding-left:20px; font-weight:bold; width:1062px; }
+.order-unfinished-body{ border-left:1px solid #2B8FCE; border-right:1px solid #2B8FCE; border-bottom:1px solid #2B8FCE; width:1080px; height:500px; padding-top:20px; }
+.order-list-div{ margin:10px auto; width:96%; height:36px; font-size:13px; line-height:36px; font-family:Courier New; padding-left:2px; padding-right:2px; border:1px solid #41BAE2; }
+.order-list-div:hover{ cursor:pointer; background-color:#41BAE2; color:#FFF; }
+.icon-btn-down{ background:url(../../../resources/images/icon.png) no-repeat; display:block; width:16px; height:16px; float:left; background-position:0 -1000px; margin:11px 6px 0 0; overflow:hidden; }
+.icon-btn-up{ background:url(../../../resources/images/icon.png) no-repeat; display:block; width:16px; height:16px; float:left; background-position:0 -950px; margin:11px 6px 0 0; overflow:hidden; }
+.order-list-div span{ margin-left:20px; }
+.order-list-div font{ font-weight:bold; font-size:14px; }
+
+/** 已完成订单 **/
+.order-finished-head{ background-color:#2B8FCE; border-radius:6px 6px 0 0; height:36px; font-size:13px; line-height:36px; color:#fff; padding-left:20px; font-weight:bold; width:1062px; }
+.order-finished-body{ border-left:1px solid #2B8FCE; border-right:1px solid #2B8FCE; border-bottom:1px solid #2B8FCE; width:1080px; height:500px; padding-top:20px; }
+.query-condition-content{ margin-bottom:10px; padding-left:20px; }
+.query-condition-content input{ width:110px; height:26px; }
+.query-condition-content font{ line-height:26px; margin-right:10px; }
+#query_end_date{ margin-right:10px; }
+
+/** 查看个人信息 **/
+.self-info-head{ background-color:#2B8FCE; border-radius:6px 6px 0 0; height:36px; font-size:13px; line-height:36px; color:#fff; padding-left:20px; font-weight:bold; width:1062px; }
+.self-info-body{ border-left:1px solid #2B8FCE; border-right:1px solid #2B8FCE; border-bottom:1px solid #2B8FCE; width:1080px; height:500px; padding-top:20px; }
+#self_info_form{ margin:10px auto; width:600px; font-family:Courier New; }
+#self_info_form p span:nth-child(1){ width:200px; text-align:right; display:inline-block; font-size:13px; line-height:36px; }
+#self_info_form p span:nth-child(2){ margin-left:10px; }
+#self_info_form p font{ color:red; margin-right:4px; font-size:15px; font-weight:bold; }
+.self-info-edit-div{ margin:0 auto; text-align:center; margin-top:30px; }
+#self_info_save_btn{ margin-left:10px; }
+.self-info-body hr{ margin-left:2%; width:96%; margin-top:10px; }
+
+/** 车票快递地址 **/
+.express-address-head{ background-color:#2B8FCE; border-radius:6px 6px 0 0; height:36px; font-size:13px; line-height:36px; color:#fff; padding-left:20px; font-weight:bold; width:1062px; }
+.express-address-body{ border-left:1px solid #2B8FCE; border-right:1px solid #2B8FCE; border-bottom:1px solid #2B8FCE; width:1080px; height:500px; padding-top:20px; }
+
+/** 我的保险 **/
+.my-insurance-head{ background-color:#2B8FCE; border-radius:6px 6px 0 0; height:36px; font-size:13px; line-height:36px; color:#fff; padding-left:20px; font-weight:bold; width:1062px; }
+.my-insurance-body{ border-left:1px solid #2B8FCE; border-right:1px solid #2B8FCE; border-bottom:1px solid #2B8FCE; width:1080px; height:500px; padding-top:20px; }
+
+/** 我的联系人 **/
+.my-contacts-head{ background-color:#2B8FCE; border-radius:6px 6px 0 0; height:36px; font-size:13px; line-height:36px; color:#fff; padding-left:20px; font-weight:bold; width:1062px; }
+.my-contacts-body{ border-left:1px solid #2B8FCE; border-right:1px solid #2B8FCE; border-bottom:1px solid #2B8FCE; width:1080px; height:500px; padding-top:20px; }
+#add_contacts_btn, #del_contacts_btn{ width:64px !important; }
+#my_contacts_table{ margin-top:5px; }
+.delete-contacts-icon{ color:#fec04e; }
+.modify-contacts-icon{ margin-left:15px; color:#507CAE; }
+.modify-contacts-icon,.delete-contacts-icon{ height:20px; line-height:20px; font-size:20px; }
+.modify-contacts-icon:hover,.delete-contacts-icon:hover{ cursor:pointer; }
+.add-contact-div-title{ background-color:#2B8FCE; margin-top:20px; border-radius:5px 5px 0 0; height:30px; font-size:13px; line-height:30px; color:#fff; padding-left:20px; font-weight:bold; width:582px; margin:0 auto; }
+.add-contact-div-body{ width:600px; margin:0 auto; border-left:1px solid #2B8FCE; border-right:1px solid #2B8FCE; border-bottom:1px solid #2B8FCE; padding-bottom:30px; }
+#add_contact_form{ margin-top:20px; }
+#add_contact_form p{ margin-top:10px; }
+#add_contact_form label{ width:200px; display:inline-block; text-align:right; margin-right:10px; }
+#add_contact_form select{ height:28px; line-height:28px; width:203px; }
+#add_contact_form input[type="text"]{ height:24px; line-height:24px; width:200px; }
+#add_contact_form p span { margin-right:10px; color:red; font-size:20px; }
+#cancel_add_contact_btn, #save_add_contact_btn{ width:90px; }
+#save_add_contact_btn{ margin-left:20px; }
+
+/** 2. 购票模块 **/
+#ticket_query{ margin-top:20px; height:50px; border:1px solid #2B8FCE; padding-left:20px; border-radius:5px; background-color:#EEF1F8;}
+#ticket_query font { font-size:14px; margin-right:5px; line-height:32px; margin-top:9px; }
+#ticket_query input{ width:100px; height:24px; margin-top:9px; }
+#ticket_query_result{ margin-top:20px; height:400px; border:1px solid #2B8FCE; border-radius:5px; }
+#ticket_list_table .btn-ticket-order{ height:30px; line-height:30px; }
+#ticket_list_table a.train-detail-link{ color:#0F82D6; }
+#ticket_list_table a.train-detail-link:hover{ cursor:pointer; text-decoration:underline; }
+#ticket_order_train_info{ margin-top:20px; }
+#ticket_order_passengers_info { margin-top:20px; }
+hr{ border: 1px dashed #bbb; }
+#ticket_order_train_info font{ line-height:32px; }
+#ticket_order_passengers_info font{ line-height:32px; }
+.ticket-order-train-info-head{ background-color:#2B8FCE; border-radius:6px 6px 0 0; height:36px; font-size:13px; line-height:36px; color:#fff; padding-left:20px; font-weight:bold; width:1282px; }
+.ticket-order-train-info-body{ border-left:1px solid #2B8FCE; border-right:1px solid #2B8FCE; border-bottom:1px solid #2B8FCE; width:1300px; background-color:#EEF1F8; padding-top:5px; padding-bottom:5px; }
+#ticket_order_train_ticket_title{ margin-left:10px; font-weight:bold; line-height:40px; font-size:16px; }
+.ticket-order-passengers-info-head{ background-color:#2B8FCE; border-radius:6px 6px 0 0; height:36px; font-size:13px; line-height:36px; color:#fff; padding-left:20px; font-weight:bold; width:1282px; }
+.ticket-order-passengers-info-body{ border-left:1px solid #2B8FCE; border-right:1px solid #2B8FCE; border-bottom:1px solid #2B8FCE; width:1300px; background-color:#FFF; padding-top:5px; padding-bottom:5px; }
+.passengers-info-div1, .passengers-info-div2, .passengers-info-div3{ padding:10px; }
+#add_passengers_btn, #ticket_submit_btn{ margin-top:10px; width:130px; }
+.passengers-info-div1 span { width:80px; display:inline-block; text-align:center; }
+#ticket_order_train_ticket_info{ margin-left:10px; }
+#ticket_order_train_ticket_title span{ margin-right:20px; }
+#ticket_order_train_ticket_info span{ margin-right:20px; }
+#ticket_order_train_ticket_info font{ color:orange; font-weight:bold; }
+#ticket_order_table input[type="text"]{ height:30px; line-height:30px; width:90%; background-color:#FFF; border:1px solid #bbb; }
+#ticket_order_table select{ height:30px; width:80%; }
+#ticket_order_table a.ticket-delete-link{ color:blue; font-size:14px; line-height:30px; }
+#ticket_order_table a.ticket-delete-link:hover{ cursor:pointer; text-decoration:underline; font-size:14px; line-height:30px; }
+#add_passengers_table select{ height:30px; width:80%; }
+#add_passengers_table input[type="text"]{ height:30px; line-height:30px; width:90%; }
+#ticket_order_result_div{ margin-top:30px; }
+.ticket-order-result-head{ margin-top:20px; background-color:#2B8FCE; border-radius:6px 6px 0 0; height:36px; font-size:13px; line-height:36px; color:#fff; padding-left:20px; font-weight:bold; width:1282px; text-align:left; }
+.ticket-order-result-body{ border-left:1px solid #2B8FCE; border-right:1px solid #2B8FCE; border-bottom:1px solid #2B8FCE; width:1300px; background-color:#EEF1F8; padding-top:5px; padding-bottom:5px; }
+.ticket-order-confirm-div{ text-align:center; margin-top:20px; margin-bottom:10px; }
+#ticket_order_result_table{ width:95%; margin:0 auto; text-align:center; background:#fbfbfb; margin-top:20px; }
+#ticket_order_result_table tr{ height:40px; background:#fff; margin-top:20px;}
+#pay_online_btn{ margin-left:30px; border:1px solid #FEAE1B; }
+#cancel_ticket_order_btn{ border:1px solid #bbb; }
+#ticket_order_title_div span{ margin-top:10px; margin-right:20px; font-size:14px; font-weight:bold; }
+#ticket_order_warning_div{ border:1px solid #2B8FCE; height:60px; line-height:60px; border-radius:5px; padding-left:20px; font-size:14px; }
+#ticket_order_warning_div span{ font-weight:bold; color:orange; }

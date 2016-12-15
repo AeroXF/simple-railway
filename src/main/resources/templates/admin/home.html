@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    
+    <link rel="icon"       th:href="@{/images/butterfly.ico}" type="image/x-icon"/>
+    <link rel="stylesheet" th:href="@{/3rdparty/buttons/buttons.css}"/>
+    <link rel="stylesheet" th:href="@{/3rdparty/font-awesome-4.5.0/css/font-awesome.css}"/>
+    <link rel="stylesheet" th:href="@{/css/admin/home.css}"/>
+    
+    <script type="text/javascript" th:src="@{/3rdparty/jquery/jquery.min.js}"></script>
+    <script type="text/javascript" th:src="@{/3rdparty/jquery/jquery.form.js}"></script>
+    <script type="text/javascript" th:src="@{/3rdparty/jquery/jquery.uriAnchor.js}"></script>
+    <script type="text/javascript" th:src="@{/3rdparty/layer/layer.js}"></script>
+    <script type="text/javascript" th:src="@{/3rdparty/arttemplate/template.js}"></script>
+    <script type="text/javascript" th:src="@{/3rdparty/datepicker/WdatePicker.js}"></script>
+    
+    <script type="text/javascript" th:src="@{/js/util/util.js}"></script>
+	<script type="text/javascript" th:src="@{/js/admin/spa.js}"></script>
+	<script type="text/javascript" th:src="@{/js/admin/spa.shell.js}"></script>
+
+	<script type="text/javascript">
+		$(function(){ spa.initModule(); });
+	</script>
+	
+	<title>simple12306管理员页面</title>
+</head>
+<body>
+	<div class="header">
+		<font style="margin-left:20px;" class="home-page-link"><i class="fa fa-home" aria-hidden="true"></i>首页</font>
+		<font style="float:right;">${name}</font>
+	</div>
+
+	<div class="body">
+		<!-- 顶级菜单 -->
+		<div id="left_top">
+			<span id="train"><i class="fa fa-train" aria-hidden="true"></i>车次管理</span>
+			<span id="traveller"><i class="fa fa-user" aria-hidden="true"></i>旅客管理</span>
+			<span id="message"><i class="fa fa-comment-o" aria-hidden="true"></i>消息中心</span>
+			<span id="stat"><i class="fa fa-bar-chart" aria-hidden="true"></i>数据统计</span>
+		</div>
+		
+		<!-- 二级菜单 -->
+		<div id="left_second">
+			
+		</div>
+		
+		<!-- 具体内容 -->
+		<div id="main_content">
+		
+		</div>
+	</div>
+</body>
+</html>

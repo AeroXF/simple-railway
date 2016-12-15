@@ -40,7 +40,7 @@
 	       </p>    
 	           <input id="user_login_btn" type="submit"   class="button button-primary button-rounded" value="登录"/>
 	           
-               <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+               <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
            </form>
        </div>
     </div>

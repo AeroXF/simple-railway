@@ -1,0 +1,59 @@
+*{ margin:0px; padding:0px; }
+
+.header{ height:40px; line-height:40px; background-color:#0099CC; }
+.header font{ margin-right:20px; font-weight:bold; color:#FFF; font-size:15px; height:40px; line-height:40px; width:70px; display:inline-block; text-align:center; }
+.header font i{ margin-right:5px; }
+.header font:hover{ background-color:#008FBF; cursor:pointer; }
+
+#left_top{ float:left;position:absolute;width:150px;background-color:#2A3038; }
+#left_second{ float:left;margin-left:150px;position:absolute;width:150px;background-color:#EAEDF1; }
+#main_content{ margin-left:300px;position:absolute;background-color:#FFF; }
+#train{ margin-top:10px; }
+
+#left_top span{ color:#FFF; font-weight:bold; height:40px; line-height:40px; font-size:14px; display:block; padding-left:20px; }
+#left_top span:hover{ cursor:pointer; background-color:#37424F; }
+#left_top span i{ margin-right:10px; }
+
+.train-manage-p{ padding:10px; }
+#left_top span.active{ background-color:#0099CC; color:#FFF; }
+
+#left_second span{ display:block; height:40px; line-height:40px; padding-left:30px; }
+#left_second span:hover{ background-color:#F4F6F8; cursor:pointer; }
+#left_second span.active{ background-color:#FFF; }
+#left_second div{ height:60px; line-height:60px; font-weight:bold; padding-left:20px; background-color:#D9DEE4; }
+
+.main-content-head{ width:90%; margin-left:20px; height:60px; padding-top:10px; }
+.main-content-body{ width:95%; margin:0 auto; }
+#train_search{ margin-left:80px; height:36px; line-height:36px; border:3px solid #B0C4DE; width:491px; font-size:14px; font-family:SongTi; }
+#train_search_btn{ height:42px; width:100px; font-size:15px; background-color:#B0C4DE; color:#FFF; border:none; border-bottom:2px solid #B0C4DE; margin-left:-6px; }
+#train_search_btn:hover{ cursor:pointer; }
+
+#minus_train_detail_table_length{ margin-left:10px; }
+#add_train_detail_table_length:hover, #minus_train_detail_table_length:hover{ cursor:pointer; }
+#train_detail_table .ticket-generate, #train_detail_table .ticket-detail-review{ color:#0066cc; }
+#train_detail_table .ticket-generate:hover, #train_detail_table .ticket-detail-review:hover{ cursor:pointer; text-decoration:underline; }
+
+#add_train_btn, #del_train_btn, #modify_train_btn{ width:60px; }
+#import_train_btn, #export_template_btn{ width:80px; }
+#train-content hr{ height:2px; border:none; border-top:1px dashed #BBB; }
+.add-train-title, .add-train-seat-type{ margin-top:10px; margin-left:10px; font-size:13px; line-height:30px; } 
+.add-station-div{ margin-top:10px; margin-left:10px; font-size:13px; height:30px; }
+.add-station-div input{ width:60px; }
+
+#add_station_btn, #save_train_btn, #cancel_train_btn{ width:80px; }
+#station_control_p{ position:absolute; bottom: 5px; right:15px; }
+.add-station-div .cancel-station-link:hover{ cursor:pointer; }
+
+.train-list-overview span{margin-left: 20px; }
+.train-list-overview{ height:30px; line-height:30px; font-size:14px; font-family:Consolas; margin-top:10px; margin-left:10px; }
+.train-detail-view{ font-size:13px; color:#72ACE3; }
+.train-detail-view:hover{ cursor:pointer; text-decoration:underline; }
+
+.modify-station-div{ height:30px; line-height:30px; margin-left:10px; }
+.modify-station-div input{ width:80px; height:24px; line-height:24px; }
+.modify-station-div span{ display:inline-block; width:100px; }
+.modify-station-div span:nth-child(0){ width:60px; }
+.modify-station-div span:nth-child(1){ width:60px; }
+#train_control_div{ position:absolute; bottom: 5px; right:15px; }
+#save_modify_train_btn, #cancel_modify_train_btn, #save_add_train_btn, #restore_modify_train_btn{ width:80px; }
+.cancel-train-link:hover{ cursor:pointer; }

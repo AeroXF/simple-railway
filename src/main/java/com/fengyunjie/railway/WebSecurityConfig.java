@@ -25,9 +25,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
             .authorizeRequests()
-                .antMatchers("/resources/**", "/register", "/3rdparty/**", "/css/**", "/js/**", "/images/**", "/", "/index", "/rest/**").permitAll()
+            	.antMatchers("/admin/**").access("hasRole('ROLE_ADMIN')")
+                .antMatchers("/register", "/3rdparty/**", "/css/**", "/js/**", "/images/**", "/", "/index", "/rest/**").permitAll()
                 .anyRequest().authenticated()
-                .and()
+                .and()  
             .formLogin()
                 .loginPage("/login")
                 .permitAll()
@@ -38,6 +39,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(userDetailsService).passwordEncoder(bCryptPasswordEncoder());
+        auth.userDetailsService(userDetailsService);
     }
 }

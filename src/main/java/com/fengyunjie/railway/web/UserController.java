@@ -58,6 +58,11 @@ public class UserController {
 		return "login";
 	}
 	
+	@RequestMapping(value = "/login", method = RequestMethod.POST)
+	public String login(Model model, User user){
+		return "redirect:/home";
+	}
+	
 	@RequestMapping(value={"/", "/index"}, method = RequestMethod.GET)
 	public String welcome(Model model){
 		return "index";
