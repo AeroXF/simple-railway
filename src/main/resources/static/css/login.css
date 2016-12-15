@@ -1,0 +1,17 @@
+.main-content-div{ width:1300px; margin:0 auto; font-size:13px; padding:6px; margin-top:20px; }
+.main-content-title{ background-color:#2B8FCE; margin-top:20px; border-radius:5px 5px 0 0; height:30px; font-size:13px; line-height:30px; color:#fff; padding-left:20px; font-weight:bold; width:582px; margin:0 auto;}
+.main-content-title i{ margin-left:5px; }
+.login-content-div{border-left:1px solid #2B8FCE; border-right:1px solid #2B8FCE; border-bottom:1px solid #2B8FCE; width:600px; height:500px; margin:0 auto; text-align:center;}
+
+#login_img{margin-top:30px; width:360px; height:160px; border-radius: 60px;}
+#login_error_tip{ color:red; position:absolute; margin-left:180px; margin-top:20px; }
+
+#login_form{ padding-top:50px; }
+form input { height:36px; font-size:16px; width:240px; line-height:36px; margin-bottom:20px;border-radius:3px; border:1px solid #D5D5D5;}
+#user_id_input{ margin-top:50px; }
+#user_pwd_input{ margin-bottom:30px; }
+#user_login_btn{ width:240px; }
+
+label.error_msg{ float:right; position:absolute; width:200px; margin-right:10px; padding-left:20px; line-height:36px; text-align:left;}
+label span.error{ color:red; }
+

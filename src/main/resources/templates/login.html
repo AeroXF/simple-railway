@@ -1,8 +1,48 @@
-<html>
-	<head>
-		<title>AAA</title>
-	</head>
-	<body>
-		BBB
-	</body>
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+    layout:decorator="layout">
+<head>
+	
+	<title>登录|客运服务|simple12306</title>
+	
+	<link   rel="icon" 	     th:href="@{/images/butterfly.ico}" type="image/x-icon"/>
+    <link   rel="stylesheet" th:href="@{/3rdparty/buttons/buttons.css}"/>
+    <link   rel="stylesheet" th:href="@{/3rdparty/font-awesome-4.5.0/css/font-awesome.css}"/>
+    <link   rel="stylesheet" th:href="@{/css/login.css}"/>
+    
+    <script type="text/javascript" th:src="@{/3rdparty/jquery/jquery.min.js}"></script>
+    <script type="text/javascript" th:src="@{/3rdparty/jquery/jquery.validate.min.js}"></script>
+    <script type="text/javascript" th:src="@{/3rdparty/jquery/messages_zh.js}"></script>
+    <script type="text/javascript" th:src="@{/js/login.js}"></script>
+</head>
+<body>
+	
+	<div class="main-content-div"  layout:fragment="content">
+       <div class="main-content-title">
+           <i>simple12306登录页面</i>
+       </div>
+       
+       <div class="login-content-div">
+       	   <img  id="login_img" th:src="@{/images/railway.jpg}"/>
+       	   
+       	   <!-- <c:if test="${1 == param.login_error}">
+     	       <div id="login_error_tip">用户名或密码错误!</div>
+     	   </c:if> -->
+       	   
+       	   <form id="login_form" action="login" method="post">
+       	   <p>
+	           <input id="username"     name="username" type="text" placeholder="手机号或邮箱 "/>
+	           <label class="error_msg" for="username"  id="label_user_id_input"></label><br />
+	       </p>
+	       <p>  
+	           <input id="password" 	name="password" type="password" placeholder="密码"/>
+	           <label class="error_msg" for="password"  id="label_user_pwd_input"></label><br/>
+	       </p>    
+	           <input id="user_login_btn" type="submit"   class="button button-primary button-rounded" value="登录"/>
+	           
+               <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+           </form>
+       </div>
+    </div>
+</body>
 </html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+    layout:decorator="layout">
+<head>
+	
+	<title>注册|客运服务|simple12306</title>
+	
+	<link   rel="icon" 		 th:href="@{/images/butterfly.ico}" type="image/x-icon"/>
+    <link   rel="stylesheet" th:href="@{/3rdparty/buttons/buttons.css}"/>
+    <link   rel="stylesheet" th:href="@{/3rdparty/font-awesome-4.5.0/css/font-awesome.css}"/>
+    <link   rel="stylesheet" th:href="@{/css/register.css}"/>
+    
+    <script type="text/javascript" th:src="@{/3rdparty/jquery/jquery.min.js}"></script>
+    <script type="text/javascript" th:src="@{/3rdparty/jquery/jquery.validate.min.js}"></script>
+    <script type="text/javascript" th:src="@{/3rdparty/jquery/messages_zh.js}"></script>
+    <script type="text/javascript" th:src="@{/js/register.js}"></script>
+</head>
+
+<body>
+	<div layout:fragment="content">
+		<input type="hidden" value="${complete}" id="register_complete"/>
+	    <div style="display:none;">
+	    	<form id="login_form" action="login" method="post">
+	    		<input name="username" type="text" value="${username}"/>
+	    		<input name="password" type="text" value="${password}"/>
+	    		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+	    	</form>
+	    </div>
+	    
+		<div class="main-content-div">
+	       <div class="main-content-title">
+	           <i style="margin-left:5px;">simple12306注册页面</i>
+	       </div>
+	       
+	       <div class="register-content-div">
+		       <!-- <div id="register_err_msg">${errMsg}</div> -->
+	       
+	           <form id="register_form" action="register" method="post">
+	               <fieldset style="border: 0px;">
+	                   <p style="margin-top: 30px;">
+	                       <label for="nickname">用户名：</label>
+	      				   <input id="nickname" name="nickname" minlength="4" type="text"/>
+	                   </p>
+	                   <p>
+	                       <label for="password">登录密码：</label>
+	      				   <input id="password" name="password" type="password" minlength="4"/>
+	                   </p>
+	                   <p>
+	                       <label for="password_repeat">确认密码：</label>
+	      				   <input id="password_repeat" name="password_repeat" type="password" minlength="4" equalTo="#password"/>
+	                   </p>
+	                   <p>
+	                       <label for="username">姓名：</label>
+	      				   <input id="username" name="username" minlength="2" type="text"/>
+	                   </p>
+	                   <p>
+	                       <label for="gender">性别：</label>
+	      				   <input type="radio" name="gender" id="gender" value="0"/>男
+	      				   <input type="radio" name="gender" id="gender" value="1"/>女
+	                   </p>
+	                   <p>
+	                       <label for="country">国家/地区：</label>
+	      				   <select name="country">
+	      				       <option value="0">中国CHINA</option>
+	      				   </select>
+	                   </p>
+	                   <p>
+	                       <label for="credentialType">证件类型：</label>
+	      				   <select name="credentialType">
+	      				       <option value="1">身份证</option>
+	      				   </select>
+	                   </p>
+	                   <p>
+	                       <label for="credentialNumber">证件号码：</label>
+	      				   <input id="credential_number" name="credentialNumber" minlength="4" maxlength="18" type="text"/>
+	                   </p>
+	                   <p>
+	                       <label for="email">邮箱：</label>
+	      				   <input id="email" name="email" minlength="10" type="text"/>
+	                   </p>
+	                   <p>
+	                       <label for="telephone">手机号码：</label>
+	      				   <input id="telephone" name="telephone" minlength="2" type="text"/>
+	                   </p>
+	                   <p>
+	                       <label for="customerType">旅客类型：</label>
+	      				   <select name="customerType">
+	      				       <option value="0">成人</option>
+	      				   </select>
+	                   </p>
+	               </fieldset>
+	               
+	               <input type="submit" id="user_register_btn" class="button button-primary button-rounded" value="注册"/>
+	               
+	               <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+	           </form>
+	       </div>
+		</div>
+	</div>
+</body>
+</html>
