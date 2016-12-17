@@ -118,8 +118,8 @@ spa.shell = (function() {
 			window.location.href = "/simple12306/";
 		});
 		
-		$("#left_top span").click(function(){
-			$("#left_top span").removeClass("active");
+		$("#left_top li").click(function(){
+			$("#left_top li").removeClass("active");
 			$(this).addClass("active");
 			
 			var modelId = $(this).attr("id");

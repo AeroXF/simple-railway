@@ -1,21 +1,21 @@
 *{ margin:0px; padding:0px; }
 
 .header{ height:40px; line-height:40px; background-color:#0099CC; }
-.header font{ margin-right:20px; font-weight:bold; color:#FFF; font-size:15px; height:40px; line-height:40px; width:70px; display:inline-block; text-align:center; }
-.header font i{ margin-right:5px; }
-.header font:hover{ background-color:#008FBF; cursor:pointer; }
+.header span{ margin-right:20px; font-weight:bold; color:#FFF; font-size:15px; height:40px; line-height:40px; width:70px; display:inline-block; text-align:center; }
+.header span i{ margin-right:5px; }
+.header span:hover{ background-color:#008FBF; cursor:pointer; }
 
 #left_top{ float:left;position:absolute;width:150px;background-color:#2A3038; }
 #left_second{ float:left;margin-left:150px;position:absolute;width:150px;background-color:#EAEDF1; }
 #main_content{ margin-left:300px;position:absolute;background-color:#FFF; }
 #train{ margin-top:10px; }
 
-#left_top span{ color:#FFF; font-weight:bold; height:40px; line-height:40px; font-size:14px; display:block; padding-left:20px; }
-#left_top span:hover{ cursor:pointer; background-color:#37424F; }
-#left_top span i{ margin-right:10px; }
+#left_top li{ color:#FFF; font-weight:bold; height:40px; line-height:40px; font-size:14px; display:block; padding-left:20px; }
+#left_top li:hover{ cursor:pointer; background-color:#37424F; }
+#left_top li i{ margin-right:10px; }
 
 .train-manage-p{ padding:10px; }
-#left_top span.active{ background-color:#0099CC; color:#FFF; }
+#left_top li.active{ background-color:#0099CC; color:#FFF; }
 
 #left_second span{ display:block; height:40px; line-height:40px; padding-left:30px; }
 #left_second span:hover{ background-color:#F4F6F8; cursor:pointer; }

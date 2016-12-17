@@ -1,14 +1,17 @@
 package com.fengyunjie.railway.model;
 
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
 /**
  * 常用联系人表
  * @author fengyunjie
  * @date   2016-08-12
  */
-//@Entity
-//@Table(name="contacts")
+@Entity
+@Table(name="contacts")
 public class Contacts extends BaseEntity {
-	private int    userId;					//外键:用户表主键
+	private Long   userId;					//外键:用户表主键
 	private String username;				//联系人姓名
 	private int    gender;					//性别:0男, 1女
 	private int    country;					//国家地区:0中国
@@ -17,10 +20,10 @@ public class Contacts extends BaseEntity {
 	private String telephone;				//电话号码
 	private int    custType;				//旅客类型:0成人
 	
-	public int getUserId() {
+	public Long getUserId() {
 		return userId;
 	}
-	public void setUserId(int userId) {
+	public void setUserId(Long userId) {
 		this.userId = userId;
 	}
 	

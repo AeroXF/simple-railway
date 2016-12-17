@@ -355,6 +355,13 @@ var util = (function(){
 			document.cookie= name + "="+cval+";expires="+exp.toGMTString();
 	}
 	
+	var getBasePath = function (){ 
+		var obj         = window.location; 
+		var contextPath = obj.pathname.split("/")[1]; 
+		var basePath    = obj.protocol+"//"+obj.host+"/"+contextPath; 
+		return basePath; 
+	} 
+	
 	return {
 		addDay: addDay,
 		formatDate: formatDate,
@@ -362,6 +369,7 @@ var util = (function(){
 		showInputTip: showInputTip,
 		setCookie: setCookie,
 		getCookie: getCookie,
-		delCookie: delCookie
+		delCookie: delCookie,
+		getBasePath: getBasePath
 	}
 }());

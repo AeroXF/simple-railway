@@ -20,6 +20,8 @@
 	<script type="text/javascript" th:src="@{/js/admin/spa.shell.js}"></script>
 
 	<script type="text/javascript">
+	    var APP_PATH = util.getBasePath();
+	    console.log("APP_PATH: " + APP_PATH);
 		$(function(){ spa.initModule(); });
 	</script>
 	
@@ -27,18 +29,18 @@
 </head>
 <body>
 	<div class="header">
-		<font style="margin-left:20px;" class="home-page-link"><i class="fa fa-home" aria-hidden="true"></i>首页</font>
-		<font style="float:right;">${name}</font>
+		<span style="margin-left:20px;" class="home-page-link"><i class="fa fa-home" aria-hidden="true"></i>首页</span>
+		<span style="float:right;" th:text="${name}">name</span>
 	</div>
 
 	<div class="body">
 		<!-- 顶级菜单 -->
-		<div id="left_top">
-			<span id="train"><i class="fa fa-train" aria-hidden="true"></i>车次管理</span>
-			<span id="traveller"><i class="fa fa-user" aria-hidden="true"></i>旅客管理</span>
-			<span id="message"><i class="fa fa-comment-o" aria-hidden="true"></i>消息中心</span>
-			<span id="stat"><i class="fa fa-bar-chart" aria-hidden="true"></i>数据统计</span>
-		</div>
+		<ul id="left_top">
+			<li id="train"><i class="fa fa-train" aria-hidden="true"></i>车次管理</li>
+			<li id="traveller"><i class="fa fa-user" aria-hidden="true"></i>旅客管理</li>
+			<li id="message"><i class="fa fa-comment-o" aria-hidden="true"></i>消息中心</li>
+			<li id="stat"><i class="fa fa-bar-chart" aria-hidden="true"></i>数据统计</li>
+		</ul>
 		
 		<!-- 二级菜单 -->
 		<div id="left_second">
@@ -46,7 +48,7 @@
 		</div>
 		
 		<!-- 具体内容 -->
-		<div id="main_content">
+		<div layout:fragment="main_content" id="main_content">
 		
 		</div>
 	</div>
