@@ -1,1 +1,22 @@
-5
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+	<script th:src="@{js/admin/train/spa.train.js}"></script>
+</head>
+<body>
+	<div id="train_content">
+		<div class="main-content-head">
+			<input type="text" id="train_search" placeholder="请输入车次"/>
+			<input type="button" id="train_search_btn" value="查询"/>
+		</div>
+		<div class="main-content-body" style="overflow-x:auto; overflow-y:auto;">
+			<div class="train-table-control-div" style="position:absolute;">
+				<i class="fa fa-plus-circle"  id="add_train_detail_table_length"   aria-hidden="true" style="color:red;font-size:2em;"></i>
+				<i class="fa fa-minus-circle" id="minus_train_detail_table_length" aria-hidden="true" style="color:orange;font-size:2em;"></i>
+			</div>
+			<table id="train_detail_table" style="margin-top:10px;"></table>
+		</div>
+	</div>
+</body>
+
+</html>

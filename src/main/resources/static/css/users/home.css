@@ -13,7 +13,7 @@ span.home-header-content-right font:first-child { font-weight:200; }
 
 #home_body{ width:1300px; margin:0 auto;}
 
-/** 1. ÎÒµÄsimple12306Ä£¿é  **/
+/** 1. ï¿½Òµï¿½simple12306Ä£ï¿½ï¿½  **/
 #home_current_position{ line-height:50px; }
 #home_current_position .position-font{ font-weight:600; }
 #home_body_left{ width:200px; height:800px; float:left; }
@@ -27,24 +27,24 @@ span.home-header-content-right font:first-child { font-weight:200; }
 .home-content-left-body p.sub-link{ font-size:13px; font-weight:300; padding-left:30px; }
 
 .home-content-right-head{ background-color:#2B8FCE; border-radius:6px 6px 0 0; height:36px; font-size:13px; line-height:36px; color:#fff; padding-left:20px; font-weight:bold; width:1062px; }
-.home-content-right-body{ border-left:1px solid #2B8FCE; border-right:1px solid #2B8FCE; border-bottom:1px solid #2B8FCE; width:1080px; background:url(../../../resources/images/bg_train.png) bottom right no-repeat; height:500px; padding-top:20px; }
+.home-content-right-body{ border-left:1px solid #2B8FCE; border-right:1px solid #2B8FCE; border-bottom:1px solid #2B8FCE; width:1080px; background:url(../../../images/bg_train.png) bottom right no-repeat; height:500px; padding-top:20px; }
 .home-content-right-body p{ margin-left:20px; line-height:36px; font-size:14px; }
 .home-content-right-body p:first-child{ font-size:24px; line-height:50px; font-weight:500; }
 .home-content-right-body .left-icon{ float:left; margin-left:20px; width:200px; height:200px; }
-.home-content-right-body .left-icon span{ display:block; width:82px; height:92px; background:url(../../../resources/images/icons.png) no-repeat; background-position:0 -300px; float:right; margin-top:20px; margin-right:20px; }
+.home-content-right-body .left-icon span{ display:block; width:82px; height:92px; background:url(../../../images/icons.png) no-repeat; background-position:0 -300px; float:right; margin-top:20px; margin-right:20px; }
 .home-content-right-body .right-content{ width: 600px; margin-left: 220px;}
 
-/** Î´Íê³É¶©µ¥ **/
+/** Î´ï¿½ï¿½É¶ï¿½ï¿½ï¿½ **/
 .order-unfinished-head{ background-color:#2B8FCE; border-radius:6px 6px 0 0; height:36px; font-size:13px; line-height:36px; color:#fff; padding-left:20px; font-weight:bold; width:1062px; }
 .order-unfinished-body{ border-left:1px solid #2B8FCE; border-right:1px solid #2B8FCE; border-bottom:1px solid #2B8FCE; width:1080px; height:500px; padding-top:20px; }
 .order-list-div{ margin:10px auto; width:96%; height:36px; font-size:13px; line-height:36px; font-family:Courier New; padding-left:2px; padding-right:2px; border:1px solid #41BAE2; }
 .order-list-div:hover{ cursor:pointer; background-color:#41BAE2; color:#FFF; }
-.icon-btn-down{ background:url(../../../resources/images/icon.png) no-repeat; display:block; width:16px; height:16px; float:left; background-position:0 -1000px; margin:11px 6px 0 0; overflow:hidden; }
-.icon-btn-up{ background:url(../../../resources/images/icon.png) no-repeat; display:block; width:16px; height:16px; float:left; background-position:0 -950px; margin:11px 6px 0 0; overflow:hidden; }
+.icon-btn-down{ background:url(../../../images/icon.png) no-repeat; display:block; width:16px; height:16px; float:left; background-position:0 -1000px; margin:11px 6px 0 0; overflow:hidden; }
+.icon-btn-up{ background:url(../../../images/icon.png) no-repeat; display:block; width:16px; height:16px; float:left; background-position:0 -950px; margin:11px 6px 0 0; overflow:hidden; }
 .order-list-div span{ margin-left:20px; }
 .order-list-div font{ font-weight:bold; font-size:14px; }
 
-/** ÒÑÍê³É¶©µ¥ **/
+/** ï¿½ï¿½ï¿½ï¿½É¶ï¿½ï¿½ï¿½ **/
 .order-finished-head{ background-color:#2B8FCE; border-radius:6px 6px 0 0; height:36px; font-size:13px; line-height:36px; color:#fff; padding-left:20px; font-weight:bold; width:1062px; }
 .order-finished-body{ border-left:1px solid #2B8FCE; border-right:1px solid #2B8FCE; border-bottom:1px solid #2B8FCE; width:1080px; height:500px; padding-top:20px; }
 .query-condition-content{ margin-bottom:10px; padding-left:20px; }
@@ -52,7 +52,7 @@ span.home-header-content-right font:first-child { font-weight:200; }
 .query-condition-content font{ line-height:26px; margin-right:10px; }
 #query_end_date{ margin-right:10px; }
 
-/** ²é¿´¸öÈËÐÅÏ¢ **/
+/** ï¿½é¿´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢ **/
 .self-info-head{ background-color:#2B8FCE; border-radius:6px 6px 0 0; height:36px; font-size:13px; line-height:36px; color:#fff; padding-left:20px; font-weight:bold; width:1062px; }
 .self-info-body{ border-left:1px solid #2B8FCE; border-right:1px solid #2B8FCE; border-bottom:1px solid #2B8FCE; width:1080px; height:500px; padding-top:20px; }
 #self_info_form{ margin:10px auto; width:600px; font-family:Courier New; }
@@ -63,15 +63,15 @@ span.home-header-content-right font:first-child { font-weight:200; }
 #self_info_save_btn{ margin-left:10px; }
 .self-info-body hr{ margin-left:2%; width:96%; margin-top:10px; }
 
-/** ³µÆ±¿ìµÝµØÖ· **/
+/** ï¿½ï¿½Æ±ï¿½ï¿½Ýµï¿½Ö· **/
 .express-address-head{ background-color:#2B8FCE; border-radius:6px 6px 0 0; height:36px; font-size:13px; line-height:36px; color:#fff; padding-left:20px; font-weight:bold; width:1062px; }
 .express-address-body{ border-left:1px solid #2B8FCE; border-right:1px solid #2B8FCE; border-bottom:1px solid #2B8FCE; width:1080px; height:500px; padding-top:20px; }
 
-/** ÎÒµÄ±£ÏÕ **/
+/** ï¿½ÒµÄ±ï¿½ï¿½ï¿½ **/
 .my-insurance-head{ background-color:#2B8FCE; border-radius:6px 6px 0 0; height:36px; font-size:13px; line-height:36px; color:#fff; padding-left:20px; font-weight:bold; width:1062px; }
 .my-insurance-body{ border-left:1px solid #2B8FCE; border-right:1px solid #2B8FCE; border-bottom:1px solid #2B8FCE; width:1080px; height:500px; padding-top:20px; }
 
-/** ÎÒµÄÁªÏµÈË **/
+/** ï¿½Òµï¿½ï¿½ï¿½Ïµï¿½ï¿½ **/
 .my-contacts-head{ background-color:#2B8FCE; border-radius:6px 6px 0 0; height:36px; font-size:13px; line-height:36px; color:#fff; padding-left:20px; font-weight:bold; width:1062px; }
 .my-contacts-body{ border-left:1px solid #2B8FCE; border-right:1px solid #2B8FCE; border-bottom:1px solid #2B8FCE; width:1080px; height:500px; padding-top:20px; }
 #add_contacts_btn, #del_contacts_btn{ width:64px !important; }
@@ -91,7 +91,7 @@ span.home-header-content-right font:first-child { font-weight:200; }
 #cancel_add_contact_btn, #save_add_contact_btn{ width:90px; }
 #save_add_contact_btn{ margin-left:20px; }
 
-/** 2. ¹ºÆ±Ä£¿é **/
+/** 2. ï¿½ï¿½Æ±Ä£ï¿½ï¿½ **/
 #ticket_query{ margin-top:20px; height:50px; border:1px solid #2B8FCE; padding-left:20px; border-radius:5px; background-color:#EEF1F8;}
 #ticket_query font { font-size:14px; margin-right:5px; line-height:32px; margin-top:9px; }
 #ticket_query input{ width:100px; height:24px; margin-top:9px; }

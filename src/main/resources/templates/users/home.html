@@ -1,1 +1,58 @@
-1234
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    
+    <link rel="icon"       th:href="@{/images/butterfly.ico}" type="image/x-icon"/>
+    <link rel="stylesheet" th:href="@{/3rdparty/buttons/buttons.css}"/>
+    <link rel="stylesheet" th:href="@{/3rdparty/font-awesome-4.5.0/css/font-awesome.css}"/>
+    <link rel="stylesheet" th:href="@{/css/users/home.css}"/>
+	
+	<script type="text/javascript" th:src="@{/3rdparty/jquery/jquery.min.js}"></script>
+	<script type="text/javascript" th:src="@{/3rdparty/jquery/jquery.uriAnchor.js}"></script>
+	<script type="text/javascript" th:src="@{/3rdparty/layer/layer.js}"></script>
+	<script type="text/javascript" th:src="@{/3rdparty/arttemplate/template.js}"></script>
+	<script type="text/javascript" th:src="@{/3rdparty/datepicker/WdatePicker.js}"></script>
+	<script type="text/javascript" th:src="@{/js/util/util.js}"></script>
+	<script type="text/javascript" th:src="@{/js/users/spa.js}"></script>
+	<script type="text/javascript" th:src="@{/js/users/spa.shell.js}"></script>
+	
+	<script type="text/javascript">
+		var APP_PATH = util.getBasePath();
+		$(function(){ spa.initModule(); });
+	</script>
+	<title>simple12306服务中心</title>
+</head>
+<body>
+    <div id="home_header">
+        <div class="home-header-content">
+            <span class="home-header-content-left"><font>simple12306客户服务中心</font></span>
+            <span class="home-header-content-right">
+            	您好, 
+                <font th:text="${name}">${name}</font>
+                |
+                <font id="simple12306" class="home-link">我的12306</font>
+                |
+                <font id="ticket" class="home-link">购&nbsp;&nbsp;票</font>
+                |
+                <font id="logout" class="home-link">注&nbsp;&nbsp;销</font>
+            </span>
+        </div>
+    </div>
+    
+    <!-- 退出登录 -->
+    <form action="logout" style="display:none;" method="post">
+    	<input type="submit" id="logout_btn"/>
+    	<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+    </form>
+    
+    <!-- 当前用户名 -->
+    <input type="hidden" value="${name}" id="current_user_input"/>
+    
+    <!-- 正文 -->
+    <div layout:fragment="home_body_content" id="home_body">
+    	
+    </div>
+	
+</body>
+</html> 

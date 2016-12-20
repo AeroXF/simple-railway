@@ -20,10 +20,10 @@ public class User {
 	private String      password;							//密码
 	private String      passwordConfirm;					//确认密码
 	private String      nickname;							//用户名
-	private int 		gender;								//性别
-	private int			country;							//国家/地区
+	private int 		gender;								//性别:0男,1女
+	private int			country;							//国家/地区:0中国
 	private Date		birthday;							//生日
-	private int    		credentialType;						//证件类型
+	private int    		credentialType;						//证件类型:0身份证
 	private String 		credentialNumber;					//证件号码
 	private String 		email;								//邮箱
 	private String 		telephone;							//手机号码

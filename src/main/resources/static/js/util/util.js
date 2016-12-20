@@ -358,7 +358,7 @@ var util = (function(){
 	var getBasePath = function (){ 
 		var obj         = window.location; 
 		var contextPath = obj.pathname.split("/")[1]; 
-		var basePath    = obj.protocol+"//"+obj.host+"/"+contextPath; 
+		var basePath    = obj.protocol+"//"+obj.host; 
 		return basePath; 
 	} 
 	

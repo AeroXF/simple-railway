@@ -1,1 +1,89 @@
-6
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+	<script th:src="@{js/admin/train/spa.trainAdjust.js}"></script>
+</head>
+<body>
+	<div id="train_content">
+		<div style="width:100%; margin:0 auto;">
+	        <p class='train-manage-p'>
+	        	<a id="add_train_btn" class="button button-action button-square button-small"><i class="fa fa-plus-circle" aria-hidden="true"></i>增加</a>
+	        	<a id="del_train_btn" class="button button-highlight button-square button-small"><i class="fa fa-times-circle" aria-hidden="true"></i>删除</a>
+	        	<a id="modify_train_btn" class="button button-primary button-square button-small"><i class="fa fa-cog" aria-hidden="true"></i>修改</a>
+	        	<a id="import_train_btn" class="button button-caution button-square button-small"><i class="fa fa-share" aria-hidden="true"></i>导入数据</a>
+	        	<a id="export_template_btn" class="button button-royal button-square button-small"><i class="fa fa-download" aria-hidden="true"></i>模板下载</a>
+	        </p>
+	        <hr style="margin-top:5px; border:1px dashed #BBB;" />
+	        <div id="all_train_overview_div"></div>
+	   </div>
+	</div>
+	
+	<div id="upload_file_div" style="display:none;">
+		<form id="upload_file_form" action="admin/train/upload/trainInfo?${_csrf.parameterName}=${_csrf.token}" method="post" enctype="multipart/form-data" target="hiddenIFrame">
+			<input type="file" name="file" id="upload_file_input" accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"/>
+		</form>
+		<iframe style="display:none;" name="hiddenIFrame" id="hiddenIFrame"></iframe> 
+	</div>
+
+<script id="add_train_template" type="text/html">
+	<div>
+		<div class='add-train-title'>
+			<span>请输入车次：</span>
+			<span><input type="text" class='train-no-input'/></span>
+		</div>
+		<div class='add-train-seat-type'>
+			<span>席位类别：</span>
+			<span>
+				<input type="checkbox" class='train-seat-type' category="0"/>商务座
+				<input type="checkbox" class='train-seat-type' category="1"/>特等座
+				<input type="checkbox" class='train-seat-type' category="2"/>一等座
+				<input type="checkbox" class='train-seat-type' category="3"/>二等座
+				<input type="checkbox" class='train-seat-type' category="4"/>高级软卧
+				<input type="checkbox" class='train-seat-type' category="5"/>软卧
+				<input type="checkbox" class='train-seat-type' category="6"/>硬卧
+				<input type="checkbox" class='train-seat-type' category="7"/>软座
+				<input type="checkbox" class='train-seat-type' category="8"/>硬座
+				<input type="checkbox" class='train-seat-type' category="9"/>站票
+			</span>
+		</div>
+		<hr style="height:2px; border:none; border-top:1px dashed #BBB;"/>
+		
+		<div id="station_control_div">
+			<p id="station_control_p">
+				<a id="add_station_btn" class="button button-action button-square button-small"><i class="fa fa-plus-circle" aria-hidden="true"></i>增加站点</a>
+				<a id="save_train_btn" class="button button-primary button-square button-small"><i class="fa fa-check" aria-hidden="true"></i>保存</a>
+				<a id="cancel_train_btn" class="button button-square button-small"><i class="fa fa-times" aria-hidden="true"></i>取消</a>
+			</p>
+		</div>
+	</div>
+</script>
+
+<script id="add_station_template" type="text/html">
+	<div class='add-station-div'>
+		<span>站点:</span><span class='station-name'><input type='text'/></span>
+		<span>开车时间:</span><span class='station-leave-time'><input type='text' onClick="WdatePicker({dateFmt:'HH:mm'})"/></span>
+		<span>到达时间:</span><span class='station-arrive-time'><input type='text' onClick="WdatePicker({dateFmt:'HH:mm'})"/></span>
+		<span class='station-order-label'>顺序:</span><span class='station-order'>{{order}}</span>
+		<span class='cancel-station-link' style='margin-left:5px;'><i class='fa fa-times-circle' aria-hidden='true' style='color:#FEAE1B;'></i></span>
+	</div>
+</script>
+
+<script id="view_train_detail_template" type="text/html">
+	<table id="train_detail_table"></table>
+</script>
+
+<script id="modify_train_detail_template" type="text/html">
+	<div id="modify_train_detail_div">
+		<div class='main-content-train-detail'>
+		</div>
+		<div id='train_control_div'>
+			<a id="restore_modify_train_btn" class="button button-highlight button-square button-small"><i class="fa fa-spinner" aria-hidden="true"></i>还原</a>
+			<a id="save_add_train_btn" class="button button-action button-square button-small"><i class="fa fa-plus-circle" aria-hidden="true"></i>增加站点</a>
+			<a id="save_modify_train_btn" class="button button-primary button-square button-small"><i class="fa fa-check" aria-hidden="true"></i>保存</a>
+			<a id="cancel_modify_train_btn" class="button button-square button-small"><i class="fa fa-times" aria-hidden="true"></i>取消</a>
+		</div>
+	</div>
+</script>
+
+</body>
+</html>

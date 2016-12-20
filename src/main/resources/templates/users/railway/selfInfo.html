@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+	layout:decorator="users/home">
+<head>
+	<script th:src="@{js/users/railway/spa.selfInfo.js}"></script>
+</head>
+<body layout:fragment="content">
+	<div id="home_current_position">您现在的位置：客运首页 > <font class="position-font">我的12306</font></div>
+	
+	<div id="home_body_left">
+	    <div class="home-content-left-head">我的12306</div>
+	    <div class="home-content-left-body">
+	        <p>我的火车票</p>
+	        <p id="orderUnfinished" class="sub-link">未完成订单</p>
+	        <p id="orderFinished" class="sub-link">已完成订单</p>
+	        <p id="myInsurance">我的保险</p>
+	        <p>个人信息</p>
+	        <p id="selfInfo" class="sub-link">查看个人信息</p>
+	        <p>常用信息管理</p>
+	        <p id="contacts" class="sub-link">常用联系人</p>
+	        <p id="expressAddress" class="sub-link">车票快递地址</p>
+	    </div>
+	</div>
+	
+	<div id="home_body_right">
+		<div class="self-info-head">个人信息</div>
+		<div class="self-info-body">
+			<hr />
+			<form id="self_info_form">
+				<p>
+					<span><font>*</font>用户名：</span>
+					<span id="nickname"></span>
+				</p>
+				<p>
+					<span><font>*</font>姓名：</span>
+					<span id="username"></span>
+				</p>
+				<p>
+					<span><font>*</font>性别：</span>
+					<span id="gender"></span>
+				</p>
+				<p>
+					<span>国家/地区：</span>
+					<span id="country"></span>
+				</p>
+				<p>
+					<span><font>*</font>证件类型：</span>
+					<span id="credentialType"></span>
+				</p>
+				<p>
+					<span><font>*</font>证件号码：</span>
+					<span id="credentialNumber"></span>
+				</p>
+				<p>
+					<span>出生日期：</span>
+					<span id="birthday"></span>
+				</p>
+				<p>
+					<span><font>*</font>手机号码：</span>
+					<span id="telephone"></span>
+				</p>
+				<p>
+					<span>电子邮件：</span>
+					<span id="email"></span>
+				</p>
+				<p>
+					<span>旅客类型：</span>
+					<span id="custType"></span>
+				</p>
+			</form>
+			
+			<hr />
+			<div class="self-info-edit-div">
+				<a id="self_info_edit_btn" class="button button-primary   button-rounded button-small">修改</a>
+				<a id="self_info_save_btn" class="button button-highlight button-rounded button-small">保存</a>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

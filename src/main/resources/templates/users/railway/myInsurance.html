@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+	layout:decorator="users/home">
+<head>
+	<script th:src="@{js/users/railway/spa.myInsurance.js}"></script>
+</head>
+<body layout:fragment="content">
+	<div id="home_current_position">您现在的位置：客运首页 > <font class="position-font">我的12306</font></div>
+	
+	<div id="home_body_left">
+	    <div class="home-content-left-head">我的12306</div>
+	    <div class="home-content-left-body">
+	        <p>我的火车票</p>
+	        <p id="orderUnfinished" class="sub-link">未完成订单</p>
+	        <p id="orderFinished" class="sub-link">已完成订单</p>
+	        <p id="myInsurance">我的保险</p>
+	        <p>个人信息</p>
+	        <p id="selfInfo" class="sub-link">查看个人信息</p>
+	        <p>常用信息管理</p>
+	        <p id="contacts" class="sub-link">常用联系人</p>
+	        <p id="expressAddress" class="sub-link">车票快递地址</p>
+	    </div>
+	</div>
+	
+	<div id="home_body_right">
+		<div class="my-insurance-head">我的保险</div>
+		<div class="my-insurance-body">
+			empty
+		</div>
+	</div>
+</body>
+</html>

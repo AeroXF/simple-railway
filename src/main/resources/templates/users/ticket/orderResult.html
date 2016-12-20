@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+	layout:decorator="users/home">
+<head>
+	<script th:src="@{js/users/ticket/spa.orderresult.js}"></script>
+</head>
+<body layout:fragment="content">
+
+	<div id="ticket_order_result_div">
+		<input type="hidden" type="text" id="order-no-input" value="${orderNo}"/>
+		<input type="hidden" type="text" id="hidden-time-buy-ticket" value="${timeBuyTicket}"/>
+		<input type="hidden" type="text" id="hidden-ticket-order-state" value="${state}"/>
+		
+		<div id="ticket_order_warning_div">
+			席位已锁定，请在<span>30</span>分钟内进行支付，完成网上购票。支付剩余时间：<span id="time_left_span"></span>
+		</div>
+		<div class="ticket-order-result-head">乘客信息</div>
+		<div class="ticket-order-result-body">
+			<div id="ticket_order_title_div">
+				<span style="margin-left:2.5%;">${sDate}</span><span>${trainNo}</span><span>${specificInfo}</span>
+			</div>
+			<table id="ticket_order_result_table">
+				<thead>
+					<tr>
+						<th style="width:12%;">序号</th>
+						<th style="width:12%;">姓名</th>
+						<th style="width:12%;">证件类型</th>
+						<th style="width:16%;">证件号码</th>
+						<th style="width:12%;">票种</th>
+						<th style="width:12%;">席别</th>
+						<th style="width:12%;">座位号</th>
+						<th style="width:12%;">票价(元)</th>
+					</tr>
+				</thead>
+				<tbody>
+					<!-- <c:forEach var="item" items="${list}" varStatus="status">
+						<tr>
+							<td>${status.index + 1}</td>
+							<td>${item.custName}</td>
+							<td>二代身份证</td>
+							<td>${item.credentialNumber}</td>
+							<td>成人票</td>
+							<td>
+								<c:choose>
+									<c:when test="${item.seatType == 0}">二等座</c:when>
+									<c:when test="${item.seatType == 1}">一等座</c:when>
+									<c:when test="${item.seatType == 2}">站票</c:when>
+								</c:choose>
+							</td>
+							<td>${item.seatNo}</td>
+							<td>${item.price}元</td>
+						</tr>
+					</c:forEach> -->
+					
+					<tr th:each="ticketorder: ${list}">
+						<td th:text="${ticketorder.index + 1}">序号</td>
+						<td th:text="${ticketorder.custName}">姓名</td>
+						<td>二代身份证</td>
+						<td th:text="${ticketorder.credentialNumber}">身份证号</td>
+						<td>成人票</td>
+						<td th:switch="${ticketorder.seatType}">
+							<span th:case="0">二等座</span>
+							<span th:case="1">一等座</span>
+							<span th:case="2">站票</span>
+						</td>
+						<td th:text="${ticketorder.seatNo}">座位号</td>
+						<td th:text="${ticketorder.price}元">票价</td>
+					</tr>
+				</tbody>
+			</table>
+			
+			<div class="ticket-order-confirm-div">
+				<a id="cancel_ticket_order_btn" class="button button-rounded button-small">取消订单</a>
+				<a id="pay_online_btn" class="button button-rounded button-highlight button-small">网上支付</a>
+			</div>
+		</div>
+	</div>
+	
+	<script id="order_pay_template" type="text/html">
+	<div>
+		<img src="<%=resources%>images/alipay.jpg" style="clip:rect(160px 380px 500px 20px); position:absolute; width:400px;margin-left: 100px; margin-top: -100px;" />
+		<a id="alipay_btn" class="button button-rounded button-highlight" style="margin-top:450px; margin-left:200px; width:200px;">网上支付</a>
+	</div>
+	</script>
+
+</body>
+</html>

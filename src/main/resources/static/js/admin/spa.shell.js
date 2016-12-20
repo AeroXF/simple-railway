@@ -115,7 +115,7 @@ spa.shell = (function() {
 	
 	initButtons = function(){
 		$(".home-page-link").click(function(){
-			window.location.href = "/simple12306/";
+			window.location.href = "/";
 		});
 		
 		$("#left_top li").click(function(){

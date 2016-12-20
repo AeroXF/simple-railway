@@ -1,17 +1,21 @@
 package com.fengyunjie.railway.web;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.fengyunjie.railway.auth.model.User;
 import com.fengyunjie.railway.auth.service.SecurityService;
 import com.fengyunjie.railway.auth.service.UserService;
 import com.fengyunjie.railway.auth.validator.UserValidator;
+import com.fengyunjie.railway.utils.SessionUtils;
 
 @Controller
 public class UserController {
@@ -65,5 +69,20 @@ public class UserController {
 	@RequestMapping(value={"/", "/index"}, method = RequestMethod.GET)
 	public String welcome(Model model){
 		return "index";
+	}
+	
+	@RequestMapping(value = "/home", method = RequestMethod.GET)
+	public ModelAndView home(ModelAndView mv){
+		UserDetails userDetails = (UserDetails)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		String authority = userDetails.getAuthorities().toArray()[0].toString();
+		
+		mv.addObject("name", SessionUtils.getUsername());
+		if(authority.equals("ROLE_ADMIN")){
+			mv.setViewName("admin/home");
+		}else{
+			mv.setViewName("users/railway/main");
+		}
+		
+		return mv;
 	}
 }

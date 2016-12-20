@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+	layout:decorator="users/home">
+<head>
+	<script th:src="@{js/users/railway/spa.orderUnfinished.js}"></script>
+	
+	<script type="text/javascript">
+		var list = ${jsonList};
+	</script>
+</head>
+<body layout:fragment="content">
+	<div id="home_current_position">您现在的位置：客运首页 > <font class="position-font">我的12306</font></div>
+	
+	<div id="home_body_left">
+	    <div class="home-content-left-head">我的12306</div>
+	    <div class="home-content-left-body">
+	        <p>我的火车票</p>
+	        <p id="orderUnfinished" class="sub-link">未完成订单</p>
+	        <p id="orderFinished" class="sub-link">已完成订单</p>
+	        <p id="myInsurance">我的保险</p>
+	        <p>个人信息</p>
+	        <p id="selfInfo" class="sub-link">查看个人信息</p>
+	        <p>常用信息管理</p>
+	        <p id="contacts" class="sub-link">常用联系人</p>
+	        <p id="expressAddress" class="sub-link">车票快递地址</p>
+	    </div>
+	</div>
+	
+	<div id="home_body_right">
+		<input type="hidden" type="text" id="order-no-input" value=""/>
+	
+		<div class="order-unfinished-head">未完成订单</div>
+		<div class="order-unfinished-body">
+			<!-- <c:forEach var="item" items="${list}" varStatus="status">
+				<div class="order-list-div" orderNo="${item.orderNo}" state="open">
+					<span class="icon-btn-down"></span>
+					<span>订单日期: <font>${item.timeBuyTicket}</font></span>
+					<span>${item.orderPerson}</span>
+					<span><font>${item.startPos}->${item.endPos}</font></span>
+					<span>乘车日期：</span>
+					<span>价格：${item.price}</span>
+				</div>
+			</c:forEach> -->
+			<div class="order-list-div" state="open" th:each="order: ${list}" orderNo="${order.orderNo}">
+				<span class="icon-btn-down"></span>
+				<span>订单日期: <font th:text="${order.timeBuyTicket}">购票时间</font></span>
+				<span th:text="${order.orderPerson}">订票人</span>
+				<span><font th:text="${order.startPos}-->${order.endPos}">起始站点到终点站</font></span>
+				<span>乘车日期：</span>
+				<span th:text="价格：${order.price}">票价</span>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
