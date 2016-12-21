@@ -15,7 +15,7 @@ spa.shell = (function() {
 		$(".home-content-left-body p").click(function(){
 			var id = $(this).attr("id");
 			if(id){
-				changeAnchorPart({ model: "simple12306", active:id });
+				changeAnchorPart({ model: "railway", active:id });
 			}
 		});
 		
@@ -46,14 +46,10 @@ spa.shell = (function() {
 	
 	var loadModelActive = function(model, active){
 		console.log("model: " + model + ", active: " + active);
-		if(typeof model == "undefined" || model == "simple12306"){
-			if(typeof active == "undefined" || active == "home"){
-				var layerIndex = layer.msg('数据加载中..', {icon: 16, shade: [0.4, '#B3B3B3'], time: 300000});
-				$("#home_body").load(APP_PATH + "/home/index",function(){
-					layer.close(layerIndex);
-					spa.main.initModule($("#home_body"));
-					addSimple12306Event();
-				});
+		if(typeof model == "undefined" || model == "ticket"){
+			if(typeof active == "undefined" || active == "ticket"){
+				spa.ticket.initModule($("#home_body"));
+				addSimple12306Event();
 			} else {	
 				var layerIndex = layer.msg('数据加载中..', {icon: 16, shade: [0.4, '#B3B3B3'], time: 300000});
 				$("#home_body").load(APP_PATH + "/" + active + "/index", function(){
@@ -62,7 +58,7 @@ spa.shell = (function() {
 					addSimple12306Event(active);
 				});
 			}
-		} else if(model == "ticket"){
+		} else if(model == "railway"){
 			if(active == "ticketOrder"){
 				var layerIndex = layer.msg('数据加载中..', {icon: 16, shade: [0.4, '#B3B3B3'], time: 300000});
 				$.get(APP_PATH + "/" + active + "/index", ticketOrderParams, function(jsp_file){
@@ -84,12 +80,7 @@ spa.shell = (function() {
 					spa.orderresult.initModule($("#home_body"));
 				});
 			}else{
-				var layerIndex = layer.msg('数据加载中..', {icon: 16, shade: [0.4, '#B3B3B3'], time: 300000});
-				$("#home_body").load(APP_PATH + "/" + active + "/index", function(){
-					layer.close(layerIndex);
-					spa[active].initModule($("#home_body"));
-					addTicketOrderEvent();
-				});
+				window.location.href = "/home/index/";
 			}
 		} else {
 			var layerIndex = layer.msg('数据加载中..', {icon: 16, shade: [0.4, '#B3B3B3'], time: 300000});
@@ -160,7 +151,7 @@ spa.shell = (function() {
 	
 	initButtons = function(){
 		$(".home-header-content-left font").click(function(){
-			window.location.href = "/simple12306/";
+			window.location.href = "/";
 		});
 		
 		if(!pageActive){
@@ -173,7 +164,7 @@ spa.shell = (function() {
 				case "ticket":
 					changeAnchorPart({ model:id, active:"ticket" });
 					break;
-				case "simple12306":
+				case "railway":
 					changeAnchorPart({ model:id, active: "home"});
 					break;
 				case "logout":

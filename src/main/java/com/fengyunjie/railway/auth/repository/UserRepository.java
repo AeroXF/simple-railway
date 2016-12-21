@@ -7,6 +7,6 @@ import com.fengyunjie.railway.auth.model.User;
 
 public interface UserRepository extends JpaRepository<User, Long> {
 
-	@Query
+	@Query("SELECT a FROM User a where a.username = ?1")
 	User findByUsername(String username);
 }

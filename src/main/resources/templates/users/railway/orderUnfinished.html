@@ -1,14 +1,13 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
-	layout:decorator="users/home">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 <head>
 	<script th:src="@{js/users/railway/spa.orderUnfinished.js}"></script>
 	
-	<script type="text/javascript">
-		var list = ${jsonList};
+	<script th:inline="javascript">
+		var list = eval([[${jsonList}]]);
 	</script>
 </head>
-<body layout:fragment="content">
+<body>
 	<div id="home_current_position">您现在的位置：客运首页 > <font class="position-font">我的12306</font></div>
 	
 	<div id="home_body_left">
@@ -27,7 +26,7 @@
 	</div>
 	
 	<div id="home_body_right">
-		<input type="hidden" type="text" id="order-no-input" value=""/>
+		<input type="hidden" id="order-no-input" value=""/>
 	
 		<div class="order-unfinished-head">未完成订单</div>
 		<div class="order-unfinished-body">

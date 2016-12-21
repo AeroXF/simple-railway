@@ -3,15 +3,19 @@
  */
 spa.orderUnfinished = (function(){
 	var adjustTrainStartInfo = function(){
+		console.log("list2: ")
+		console.log(list);
+		console.log("length: " + list.length);
 		
 		for(var i = 0; i < list.length; i++){
-			var data = list[i];
+			/*var data = list[i];
 			var time1 = "", time2 = "";
 
 			time1 = data['trainTag'].substr(0, 4) + "-" + data['trainTag'].substr(4, 2) + "-" + data['trainTag'].substr(6, 2);
 			time2 = " " + data['timeTrainStart'];
 
-			$(".order-unfinished-body div:eq(" + i + ") span:eq(4)").html("乘车日期：<font>" + time1 + time2 + "</font>");
+			$(".order-unfinished-body div:eq(" + i + ") span:eq(4)").html("乘车日期：<font>" + time1 + time2 + "</font>");*/
+			console.log(list[i]);
 		}
 	}
 	

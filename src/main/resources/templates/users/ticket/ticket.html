@@ -1,30 +1,32 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
-	layout:decorator="users/home">
+	layout:decorator="users/ticket/layout">
 <head>
-	<script th:src="@{js/users/ticket/spa.ticket.js}"></script>
+	<script th:src="@{/js/users/ticket/spa.ticket.js}"></script>
 </head>
-<body layout:fragment="content">
-	<div id="ticket_order_div" style="display:none;">
-		<input type="text" name="trainTag"   id="ticket_order_train_tag"/>
-		<input type="text" name="startPos"   id="ticket_order_start_pos"/>
-		<input type="text" name="endPos"     id="ticket_order_end_pos"/>
-		<input type="text" name="trainNo"    id="ticket_order_train_no"/>
-		<input type="text" name="queryDate"  id="ticket_order_query_date"/>
-	</div>
-	
-	<button id="ticket_order_btn" style="display:none;"></button>
-	
-	<div id="ticket_content">
-		<div id="ticket_query">
-			<font>出发地</font><input type="text" id="query_start_pos"  style="margin-right:15px"/>
-			<font>目的地</font><input type="text" id="query_end_pos"    style="margin-right:15px"/>
-			<font>出发日</font><input type="text" id="query_start_date" style="margin-right:15px" class="Wdate" readonly="readonly"/>
-			<a id="ticket_query_btn" class="button button-highlight button-rounded button-small">查询</a>
+<body>
+	<div layout:fragment="home_body_content">
+		<div id="ticket_order_div" style="display:none;">
+			<input type="text" name="trainTag"   id="ticket_order_train_tag"/>
+			<input type="text" name="startPos"   id="ticket_order_start_pos"/>
+			<input type="text" name="endPos"     id="ticket_order_end_pos"/>
+			<input type="text" name="trainNo"    id="ticket_order_train_no"/>
+			<input type="text" name="queryDate"  id="ticket_order_query_date"/>
 		</div>
 		
-		<div id="ticket_query_result">
-			<table id="ticket_list_table"></table>
+		<button id="ticket_order_btn" style="display:none;"></button>
+		
+		<div id="ticket_content">
+			<div id="ticket_query">
+				<font>出发地</font><input type="text" id="query_start_pos"  style="margin-right:15px"/>
+				<font>目的地</font><input type="text" id="query_end_pos"    style="margin-right:15px"/>
+				<font>出发日</font><input type="text" id="query_start_date" style="margin-right:15px" class="Wdate" readonly="readonly"/>
+				<a id="ticket_query_btn" class="button button-highlight button-rounded button-small">查询</a>
+			</div>
+			
+			<div id="ticket_query_result">
+				<table id="ticket_list_table"></table>
+			</div>
 		</div>
 	</div>
 </body>

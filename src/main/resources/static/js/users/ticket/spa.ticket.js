@@ -31,7 +31,7 @@ function getTicket(columns){
 			var timeInterval = (hour < 10 ? "0" + hour : hour) + ":" + (minute < 10 ? "0" + minute : minute);
 			
 			var startPos = $("#query_start_pos").val();
-			var endPos = $("#query_end_pos").val();
+			var endPos   = $("#query_end_pos").val();
 			
 			dataArray.push([
 			    "<a class='train-detail-link' trainTag='" + ticket["trainTag"] + "'>" + ticket["trainNo"] + "</a>",

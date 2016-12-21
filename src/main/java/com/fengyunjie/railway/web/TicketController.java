@@ -5,20 +5,25 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.fengyunjie.railway.model.Ticket;
 import com.fengyunjie.railway.service.TicketService;
+import com.fengyunjie.railway.utils.SessionUtils;
 
 @Controller
-@RequestMapping("/ticket/")
+@RequestMapping("/ticket")
 public class TicketController {
 	@Autowired
 	private TicketService ticketService;
 	
-	@RequestMapping("/index")
-	public String index(){
-		return "users/ticket/ticket";
+	@RequestMapping(value={"/", "/index"}, method=RequestMethod.GET)
+	public ModelAndView index(ModelAndView mv){
+		mv.addObject("name", SessionUtils.getUsername());
+		mv.setViewName("users/ticket/ticket");
+		return mv;
 	}
 	
 	@RequestMapping("/getTicket")

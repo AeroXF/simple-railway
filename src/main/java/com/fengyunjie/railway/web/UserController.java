@@ -85,4 +85,12 @@ public class UserController {
 		
 		return mv;
 	}
+	
+	@RequestMapping("/home/index")
+	public ModelAndView indexPage(){	
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("name", SessionUtils.getUsername());
+		mv.setViewName("users/railway/main");
+		return mv;
+	}
 }
