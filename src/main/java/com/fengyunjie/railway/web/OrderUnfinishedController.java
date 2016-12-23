@@ -12,6 +12,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fengyunjie.railway.model.TicketOrder;
 import com.fengyunjie.railway.service.TicketOrderService;
+import com.fengyunjie.railway.utils.SessionUtils;
 
 @Controller
 @RequestMapping("/orderUnfinished/")
@@ -28,7 +29,8 @@ public class OrderUnfinishedController {
 		List<Map<String, Object>> list = ticketOrderService.getOrderMainInfo('Y', startDate, endDate);
 		ModelAndView mv = new ModelAndView("users/railway/orderUnfinished");
 		mv.addObject("list", list);
-		mv.addObject("jsonList", objectMapper.writeValueAsString(list));
+		mv.addObject("jsonList", objectMapper.writeValueAsString(list));;
+		mv.addObject("name", SessionUtils.getUsername());
 		return mv;
 	}
 	

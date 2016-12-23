@@ -14,7 +14,7 @@ span.home-header-content-right font:first-child { font-weight:200; }
 #home_body{ width:1300px; margin:0 auto;}
 
 /** 1. �ҵ�simple12306ģ��  **/
-#home_current_position{ line-height:50px; }
+#home_current_position{ line-height:50px; font-size:14px; }
 #home_current_position .position-font{ font-weight:600; }
 #home_body_left{ width:200px; height:800px; float:left; }
 #home_body_right{ margin-left:220px; width:1000px; }
@@ -49,7 +49,7 @@ span.home-header-content-right font:first-child { font-weight:200; }
 .order-finished-body{ border-left:1px solid #2B8FCE; border-right:1px solid #2B8FCE; border-bottom:1px solid #2B8FCE; width:1080px; height:500px; padding-top:20px; }
 .query-condition-content{ margin-bottom:10px; padding-left:20px; }
 .query-condition-content input{ width:110px; height:26px; }
-.query-condition-content font{ line-height:26px; margin-right:10px; }
+.query-condition-content font{ line-height:26px; margin-right:10px; font-size:13px; }
 #query_end_date{ margin-right:10px; }
 
 /** �鿴������Ϣ **/
@@ -57,7 +57,7 @@ span.home-header-content-right font:first-child { font-weight:200; }
 .self-info-body{ border-left:1px solid #2B8FCE; border-right:1px solid #2B8FCE; border-bottom:1px solid #2B8FCE; width:1080px; height:500px; padding-top:20px; }
 #self_info_form{ margin:10px auto; width:600px; font-family:Courier New; }
 #self_info_form p span:nth-child(1){ width:200px; text-align:right; display:inline-block; font-size:13px; line-height:36px; }
-#self_info_form p span:nth-child(2){ margin-left:10px; }
+#self_info_form p span:nth-child(2){ margin-left:10px; font-size:13px; }
 #self_info_form p font{ color:red; margin-right:4px; font-size:15px; font-weight:bold; }
 .self-info-edit-div{ margin:0 auto; text-align:center; margin-top:30px; }
 #self_info_save_btn{ margin-left:10px; }

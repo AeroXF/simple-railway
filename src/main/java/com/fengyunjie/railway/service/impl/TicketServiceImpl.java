@@ -2,6 +2,8 @@ package com.fengyunjie.railway.service.impl;
 
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
@@ -13,6 +15,7 @@ import com.fengyunjie.railway.repository.TicketRepository;
 import com.fengyunjie.railway.service.TicketService;
 
 @Service
+@Transactional
 public class TicketServiceImpl implements TicketService {
 	@Autowired
 	private TicketRepository ticketRepository;
@@ -22,7 +25,8 @@ public class TicketServiceImpl implements TicketService {
 
 	@Override
 	public List<Ticket> getTicket(String startDate, String startPos, String endPos) {
-		List<Ticket> list = ticketRepository.findByStartDateAndStartPosAndEndPos(startDate, startPos, endPos);
+		String queryStartDate = String.join("", startDate.split("-"));
+		List<Ticket> list = ticketRepository.findByStartPosAndEndPosAndStartDate(startPos, endPos, queryStartDate);
 		for(Ticket ticket : list){
 			Ticket tempTicket = ticketRepository.findByTrainTagAndStationName(ticket.getTrainTag(), startPos);
 			ticket.setStartTime(tempTicket.getStartTime());

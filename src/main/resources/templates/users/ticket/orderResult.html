@@ -1,14 +1,14 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+	layout:decorator="users/ticket/layout">
 <head>
-	<script th:src="@{js/users/ticket/spa.orderresult.js}"></script>
+	<script th:src="@{/js/users/ticket/orderResult.js}"></script>
 </head>
 <body layout:fragment="content">
-
 	<div id="ticket_order_result_div">
-		<input type="hidden" type="text" id="order-no-input" value="${orderNo}"/>
-		<input type="hidden" type="text" id="hidden-time-buy-ticket" value="${timeBuyTicket}"/>
-		<input type="hidden" type="text" id="hidden-ticket-order-state" value="${state}"/>
+		<input type="hidden" id="order_no_input"            th:value="${orderNo}"/>
+		<input type="hidden" id="hidden_time_buy_ticket"    th:value="${timeBuyTicket}"/>
+		<input type="hidden" id="hidden_ticket_order_state" th:value="${state}"/>
 		
 		<div id="ticket_order_warning_div">
 			席位已锁定，请在<span>30</span>分钟内进行支付，完成网上购票。支付剩余时间：<span id="time_left_span"></span>
@@ -16,7 +16,9 @@
 		<div class="ticket-order-result-head">乘客信息</div>
 		<div class="ticket-order-result-body">
 			<div id="ticket_order_title_div">
-				<span style="margin-left:2.5%;">${sDate}</span><span>${trainNo}</span><span>${specificInfo}</span>
+				<span th:text="${sDate}" style="margin-left:2.5%;">${sDate}</span>
+				<span th:text="${trainNo}">${trainNo}</span>
+				<span th:text="${specificInfo}">${specificInfo}</span>
 			</div>
 			<table id="ticket_order_result_table">
 				<thead>
@@ -32,27 +34,9 @@
 					</tr>
 				</thead>
 				<tbody>
-					<!-- <c:forEach var="item" items="${list}" varStatus="status">
-						<tr>
-							<td>${status.index + 1}</td>
-							<td>${item.custName}</td>
-							<td>二代身份证</td>
-							<td>${item.credentialNumber}</td>
-							<td>成人票</td>
-							<td>
-								<c:choose>
-									<c:when test="${item.seatType == 0}">二等座</c:when>
-									<c:when test="${item.seatType == 1}">一等座</c:when>
-									<c:when test="${item.seatType == 2}">站票</c:when>
-								</c:choose>
-							</td>
-							<td>${item.seatNo}</td>
-							<td>${item.price}元</td>
-						</tr>
-					</c:forEach> -->
 					
-					<tr th:each="ticketorder: ${list}">
-						<td th:text="${ticketorder.index + 1}">序号</td>
+					<tr th:each="ticketorder,stat: ${list}">
+						<td th:text="${stat.index + 1}">序号</td>
 						<td th:text="${ticketorder.custName}">姓名</td>
 						<td>二代身份证</td>
 						<td th:text="${ticketorder.credentialNumber}">身份证号</td>
@@ -63,7 +47,7 @@
 							<span th:case="2">站票</span>
 						</td>
 						<td th:text="${ticketorder.seatNo}">座位号</td>
-						<td th:text="${ticketorder.price}元">票价</td>
+						<td th:text="${ticketorder.price}">票价</td>
 					</tr>
 				</tbody>
 			</table>
@@ -77,7 +61,7 @@
 	
 	<script id="order_pay_template" type="text/html">
 	<div>
-		<img src="<%=resources%>images/alipay.jpg" style="clip:rect(160px 380px 500px 20px); position:absolute; width:400px;margin-left: 100px; margin-top: -100px;" />
+		<img th:src="@{/images/alipay.jpg}" style="clip:rect(160px 380px 500px 20px); position:absolute; width:400px;margin-left: 100px; margin-top: -100px;" />
 		<a id="alipay_btn" class="button button-rounded button-highlight" style="margin-top:450px; margin-left:200px; width:200px;">网上支付</a>
 	</div>
 	</script>

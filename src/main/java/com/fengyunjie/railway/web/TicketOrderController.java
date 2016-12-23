@@ -12,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.fengyunjie.railway.model.Contacts;
 import com.fengyunjie.railway.model.Ticket;
@@ -32,7 +33,7 @@ public class TicketOrderController {
 	private TicketOrderService ticketOrderService;
 	
 	@RequestMapping("/index")
-	public String index(HttpSession session, HttpServletRequest request, String trainTag, String queryDate, String trainNo, String startPos, String endPos){
+	public ModelAndView index(HttpSession session, HttpServletRequest request, String trainTag, String queryDate, String trainNo, String startPos, String endPos){
 		if(trainTag != null){
 			session.setAttribute("trainTag", trainTag);
 			session.setAttribute("queryDate", queryDate);
@@ -111,7 +112,14 @@ public class TicketOrderController {
 		List<Contacts> contacts = contactsService.getContacts();
 		request.setAttribute("contacts",  contacts);
 		
-		return "users/ticket/ticketOrder";
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("trainNo", trainNo);
+		mv.addObject("startPos", startPos);
+		mv.addObject("endPos", endPos);
+		mv.addObject("queryDate", queryDate);
+		mv.setViewName("users/ticket/ticketOrder");
+		
+		return mv;
 	}
 	
 	@RequestMapping("/get/orderPayment")

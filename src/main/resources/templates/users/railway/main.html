@@ -2,36 +2,17 @@
 <html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
 	layout:decorator="users/railway/layout">
 <head>
-	<script th:src="@{../../js/users/railway/spa.main.js}"></script>
+	<script th:src="@{../../js/users/railway/main.js}"></script>
 </head>
 <body>
-	<div layout:fragment="home_body_content">
-		<div id="home_current_position">您现在的位置：客运首页 > <font class="position-font">我的12306</font></div>
-		
-		<div id="home_body_left">
-		    <div class="home-content-left-head">我的12306</div>
-		    <div class="home-content-left-body">
-		        <p>我的火车票</p>
-		        <p id="orderUnfinished" class="sub-link">未完成订单</p>
-		        <p id="orderFinished" class="sub-link">已完成订单</p>
-		        <p id="myInsurance">我的保险</p>
-		        <p>个人信息</p>
-		        <p id="selfInfo" class="sub-link">查看个人信息</p>
-		        <p>常用信息管理</p>
-		        <p id="contacts" class="sub-link">常用联系人</p>
-		        <p id="expressAddress" class="sub-link">车票快递地址</p>
-		    </div>
-		</div>
-		
-		<div id="home_body_right">
-			<div class="home-content-right-head">系统信息</div>
-			<div class="home-content-right-body">
-				<div class="left-icon"><span></span></div>
-				<div class="right-content">
-			 		<p><font color="blue" th:text="${name}">姓名</font>先生, 上午好</p>
-					<p>欢迎您登录simple12306客运网站</p>
-					<p style="color:red;">如果您的密码在其他网站也使用，建议您修改本网站密码。</p>
-				</div>
+	<div layout:fragment="home_body_right_content">
+		<div class="home-content-right-head">系统信息</div>
+		<div class="home-content-right-body">
+			<div class="left-icon"><span></span></div>
+			<div class="right-content">
+		 		<p><font color="blue" th:text="${name}">姓名</font>先生, 上午好</p>
+				<p>欢迎您登录simple12306客运网站</p>
+				<p style="color:red;">如果您的密码在其他网站也使用，建议您修改本网站密码。</p>
 			</div>
 		</div>
 	</div>

@@ -6,9 +6,11 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.fengyunjie.railway.model.Contacts;
 import com.fengyunjie.railway.service.ContactsService;
+import com.fengyunjie.railway.utils.SessionUtils;
 
 @Controller
 @RequestMapping("/contacts/")
@@ -17,8 +19,11 @@ public class ContactsController {
 	private ContactsService contactsService;
 	
 	@RequestMapping(value="/index")
-	public String index(){
-		return "users/railway/contacts";
+	public ModelAndView index(){
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("users/railway/contacts");
+		mv.addObject("name", SessionUtils.getUsername());
+		return mv;
 	}
 	
 	@RequestMapping(value="/add/contact", method=RequestMethod.POST)

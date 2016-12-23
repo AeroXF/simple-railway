@@ -3,6 +3,7 @@ package com.fengyunjie.railway.model;
 
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
@@ -34,32 +35,84 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "ticket")
 public class Ticket extends BaseEntity {
-	private String trainNo;							//车次
-	private String stationName;						//站点
-	private String trainTag;						//是否同一车次
-	private Date   startTime;						//开车时间
-	private Date   deptTime;						//停靠时间
-	private int    statOrder;						//顺序
-	private double priceBusiness;					//商务座价格
-	private int    ticketBusiness;					//商务座
-	private double priceSpecial;					//特等座价格
-	private int    ticketSpecial;					//特等座
-	private double priceFirstClass;					//一等座价格
-	private int    ticketFirstClass;				//一等座
-	private double priceSecondClass;				//二等座价格
-	private int    ticketSecondClass;				//二等座
-	private double priceAdvancedSoftSleeper;		//高级软卧价格
-	private int    ticketAdvancedSoftSleeper;		//高级软卧
-	private double priceSoftSleeper;				//软卧价格
-	private int    ticketSoftSleeper;				//软卧
-	private double priceHardSleeper;				//硬卧价格
-	private int    ticketHardSleeper;				//硬卧
-	private double priceSoftSit;					//软座价格
-	private int    ticketSoftSit;					//软座
-	private double priceHardSit;					//硬座价格
-	private int    ticketHardSit;					//硬座
-	private double priceStand;						//站票价格
-	private int    ticketStand;						//站票
+
+	@Column(nullable=false)
+	private String  trainNo;						//车次
+
+	@Column(nullable=false)
+	private String  stationName;					//站点
+
+	@Column(nullable=false)
+	private String  trainTag;						//是否同一车次
+
+	@Column(nullable=true)
+	private Date   startTime;						//开车日期
+
+	@Column(nullable=true)
+	private Date    deptTime;						//停靠时间
+
+	@Column(nullable=false)
+	private Integer statOrder;						//顺序
+
+	@Column(nullable=true)
+	private Double  priceBusiness;					//商务座价格
+
+	@Column(nullable=true)
+	private Integer ticketBusiness;					//商务座
+
+	@Column(nullable=true)
+	private Double  priceSpecial;					//特等座价格
+
+	@Column(nullable=true)
+	private Integer ticketSpecial;					//特等座
+
+	@Column(nullable=true)
+	private Double  priceFirstClass;				//一等座价格
+
+	@Column(nullable=true)
+	private Integer ticketFirstClass;				//一等座
+
+	@Column(nullable=true)
+	private Double  priceSecondClass;				//二等座价格
+
+	@Column(nullable=true)
+	private Integer ticketSecondClass;				//二等座
+
+	@Column(nullable=true)
+	private Double  priceAdvancedSoftSleeper;		//高级软卧价格
+
+	@Column(nullable=true)
+	private Integer ticketAdvancedSoftSleeper;		//高级软卧
+
+	@Column(nullable=true)
+	private Double  priceSoftSleeper;				//软卧价格
+
+	@Column(nullable=true)
+	private Integer ticketSoftSleeper;				//软卧
+
+	@Column(nullable=true)
+	private Double  priceHardSleeper;				//硬卧价格
+
+	@Column(nullable=true)
+	private Integer ticketHardSleeper;				//硬卧
+
+	@Column(nullable=true)
+	private Double  priceSoftSit;					//软座价格
+
+	@Column(nullable=true)
+	private Integer ticketSoftSit;					//软座
+
+	@Column(nullable=true)
+	private Double  priceHardSit;					//硬座价格
+
+	@Column(nullable=true)
+	private Integer ticketHardSit;					//硬座
+
+	@Column(nullable=true)
+	private Double  priceStand;						//站票价格
+
+	@Column(nullable=true)
+	private Integer ticketStand;						//站票
 	
 	public String getTrainNo() {
 		return trainNo;
@@ -89,80 +142,80 @@ public class Ticket extends BaseEntity {
 		this.deptTime = deptTime;
 	}
 	
-	public int getStatOrder() {
+	public Integer getStatOrder() {
 		return statOrder;
 	}
-	public void setStatOrder(int statOrder) {
+	public void setStatOrder(Integer statOrder) {
 		this.statOrder = statOrder;
 	}
 	
-	public int getTicketBusiness() {
+	public Integer getTicketBusiness() {
 		return ticketBusiness;
 	}
-	public void setTicketBusiness(int ticketBusiness) {
+	public void setTicketBusiness(Integer ticketBusiness) {
 		this.ticketBusiness = ticketBusiness;
 	}
 	
-	public int getTicketSpecial() {
+	public Integer getTicketSpecial() {
 		return ticketSpecial;
 	}
-	public void setTicketSpecial(int ticketSpecial) {
+	public void setTicketSpecial(Integer ticketSpecial) {
 		this.ticketSpecial = ticketSpecial;
 	}
 	
-	public int getTicketFirstClass() {
+	public Integer getTicketFirstClass() {
 		return ticketFirstClass;
 	}
-	public void setTicketFirstClass(int ticketFirstClass) {
+	public void setTicketFirstClass(Integer ticketFirstClass) {
 		this.ticketFirstClass = ticketFirstClass;
 	}
 	
-	public int getTicketSecondClass() {
+	public Integer getTicketSecondClass() {
 		return ticketSecondClass;
 	}
-	public void setTicketSecondClass(int ticketSecondClass) {
+	public void setTicketSecondClass(Integer ticketSecondClass) {
 		this.ticketSecondClass = ticketSecondClass;
 	}
 	
-	public int getTicketAdvancedSoftSleeper() {
+	public Integer getTicketAdvancedSoftSleeper() {
 		return ticketAdvancedSoftSleeper;
 	}
-	public void setTicketAdvancedSoftSleeper(int ticketAdvancedSoftSleeper) {
+	public void setTicketAdvancedSoftSleeper(Integer ticketAdvancedSoftSleeper) {
 		this.ticketAdvancedSoftSleeper = ticketAdvancedSoftSleeper;
 	}
 	
-	public int getTicketSoftSleeper() {
+	public Integer getTicketSoftSleeper() {
 		return ticketSoftSleeper;
 	}
-	public void setTicketSoftSleeper(int ticketSoftSleeper) {
+	public void setTicketSoftSleeper(Integer ticketSoftSleeper) {
 		this.ticketSoftSleeper = ticketSoftSleeper;
 	}
 	
-	public int getTicketHardSleeper() {
+	public Integer getTicketHardSleeper() {
 		return ticketHardSleeper;
 	}
-	public void setTicketHardSleeper(int ticketHardSleeper) {
+	public void setTicketHardSleeper(Integer ticketHardSleeper) {
 		this.ticketHardSleeper = ticketHardSleeper;
 	}
 	
-	public int getTicketSoftSit() {
+	public Integer getTicketSoftSit() {
 		return ticketSoftSit;
 	}
-	public void setTicketSoftSit(int ticketSoftSit) {
+	public void setTicketSoftSit(Integer ticketSoftSit) {
 		this.ticketSoftSit = ticketSoftSit;
 	}
 	
-	public int getTicketHardSit() {
+	public Integer getTicketHardSit() {
 		return ticketHardSit;
 	}
-	public void setTicketHardSit(int ticketHardSit) {
+	public void setTicketHardSit(Integer ticketHardSit) {
 		this.ticketHardSit = ticketHardSit;
 	}
 	
-	public int getTicketStand() {
+	public Integer getTicketStand() {
 		return ticketStand;
 	}
-	public void setTicketStand(int ticketStand) {
+	public void setTicketStand(Integer ticketStand) {
 		this.ticketStand = ticketStand;
 	}
 	
@@ -173,73 +226,73 @@ public class Ticket extends BaseEntity {
 		this.trainTag = trainTag;
 	}
 	
-	public double getPriceBusiness() {
+	public Double getPriceBusiness() {
 		return priceBusiness;
 	}
-	public void setPriceBusiness(double priceBusiness) {
+	public void setPriceBusiness(Double priceBusiness) {
 		this.priceBusiness = priceBusiness;
 	}
 	
-	public double getPriceSpecial() {
+	public Double getPriceSpecial() {
 		return priceSpecial;
 	}
-	public void setPriceSpecial(double priceSpecial) {
+	public void setPriceSpecial(Double priceSpecial) {
 		this.priceSpecial = priceSpecial;
 	}
 	
-	public double getPriceFirstClass() {
+	public Double getPriceFirstClass() {
 		return priceFirstClass;
 	}
-	public void setPriceFirstClass(double priceFirstClass) {
+	public void setPriceFirstClass(Double priceFirstClass) {
 		this.priceFirstClass = priceFirstClass;
 	}
 	
-	public double getPriceSecondClass() {
+	public Double getPriceSecondClass() {
 		return priceSecondClass;
 	}
-	public void setPriceSecondClass(double priceSecondClass) {
+	public void setPriceSecondClass(Double priceSecondClass) {
 		this.priceSecondClass = priceSecondClass;
 	}
 	
-	public double getPriceAdvancedSoftSleeper() {
+	public Double getPriceAdvancedSoftSleeper() {
 		return priceAdvancedSoftSleeper;
 	}
-	public void setPriceAdvancedSoftSleeper(double priceAdvancedSoftSleeper) {
+	public void setPriceAdvancedSoftSleeper(Double priceAdvancedSoftSleeper) {
 		this.priceAdvancedSoftSleeper = priceAdvancedSoftSleeper;
 	}
 	
-	public double getPriceSoftSleeper() {
+	public Double getPriceSoftSleeper() {
 		return priceSoftSleeper;
 	}
-	public void setPriceSoftSleeper(double priceSoftSleeper) {
+	public void setPriceSoftSleeper(Double priceSoftSleeper) {
 		this.priceSoftSleeper = priceSoftSleeper;
 	}
 	
-	public double getPriceHardSleeper() {
+	public Double getPriceHardSleeper() {
 		return priceHardSleeper;
 	}
-	public void setPriceHardSleeper(double priceHardSleeper) {
+	public void setPriceHardSleeper(Double priceHardSleeper) {
 		this.priceHardSleeper = priceHardSleeper;
 	}
 	
-	public double getPriceSoftSit() {
+	public Double getPriceSoftSit() {
 		return priceSoftSit;
 	}
-	public void setPriceSoftSit(double priceSoftSit) {
+	public void setPriceSoftSit(Double priceSoftSit) {
 		this.priceSoftSit = priceSoftSit;
 	}
 	
-	public double getPriceHardSit() {
+	public Double getPriceHardSit() {
 		return priceHardSit;
 	}
-	public void setPriceHardSit(double priceHardSit) {
+	public void setPriceHardSit(Double priceHardSit) {
 		this.priceHardSit = priceHardSit;
 	}
 	
-	public double getPriceStand() {
+	public Double getPriceStand() {
 		return priceStand;
 	}
-	public void setPriceStand(double priceStand) {
+	public void setPriceStand(Double priceStand) {
 		this.priceStand = priceStand;
 	}
 }

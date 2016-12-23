@@ -4,8 +4,11 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -22,6 +25,7 @@ import com.fengyunjie.railway.utils.BizUtils;
 import com.fengyunjie.railway.utils.SessionUtils;
 
 @Service
+@Transactional
 public class TicketOrderServiceImpl implements TicketOrderService {
 	@Autowired
 	private UserService userService;
@@ -96,12 +100,38 @@ public class TicketOrderServiceImpl implements TicketOrderService {
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		User user = userService.findByUsername(SessionUtils.getUsername());
 		
+		List<TicketOrder> orderList    = new ArrayList<TicketOrder>();
 		List<Map<String, Object>> list = new ArrayList<Map<String, Object>>();
+		Map<String, Double> cacheMap   = new HashMap<String, Double>();
 		try {
 			Date date1 = sdf.parse(startDate);
-			list = ticketOrderRepository.getOrderMainInfo(state, date1, BizUtils.addOneDay(endDate), user.getId());
-			for(Map<String, Object> map : list){
-				map.put("orderPerson", user.getUsername());
+			orderList = ticketOrderRepository.getOrderMainInfo(state, date1, BizUtils.addOneDay(endDate), user.getId());
+			
+			for(TicketOrder order : orderList){
+				String orderNo = order.getOrderNo();
+				if(cacheMap.get(orderNo) == null){
+					cacheMap.put(orderNo, order.getPrice());
+				} else {
+					Double price = cacheMap.get(orderNo) + order.getPrice();
+					cacheMap.put(orderNo, price);
+				}
+			}
+			
+			for(TicketOrder order : orderList){
+				String orderNo = order.getOrderNo();
+				if(cacheMap.get(orderNo) > 0){
+					Map<String, Object> map = new HashMap<String, Object>();
+					map.put("orderNo", orderNo);
+					map.put("timeBuyTicket", sdf.format(order.getTimeBuyTicket()));
+					map.put("startPos", order.getStartPos());
+					map.put("endPos", order.getEndPos());
+					map.put("trainTag", order.getTrainTag());
+					map.put("timeTrainStart", order.getTimeTrainStart());
+					map.put("orderPerson", user.getUsername());
+					map.put("price", cacheMap.get(orderNo));
+					cacheMap.put(orderNo, -1.0);
+					list.add(map);
+				}
 			}
 		} catch (ParseException e) {
 			e.printStackTrace();

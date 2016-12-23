@@ -10,8 +10,9 @@ import com.fengyunjie.railway.model.Ticket;
 
 public interface TicketRepository extends JpaRepository<Ticket, Long> {
 
-	@Query("SELECT a FROM Ticket a  WHERE a.stationName=?3 AND a.trainNo IN (SELECT b.trainNo FROM Ticket b WHERE b.stationName=?2 AND date_format(b.startTime,'%Y-%m-%d')=?1)")
-	List<Ticket> findByStartDateAndStartPosAndEndPos(String startDate, String startPos, String endPos);
+	//@Query("SELECT a FROM Ticket a  WHERE a.stationName=?3 AND a.trainNo IN (SELECT b.trainNo FROM Ticket b WHERE b.stationName=?2 AND date_format(b.startTime,'%Y-%m-%d')=?1)")
+	@Query("SELECT a FROM Ticket a  WHERE a.stationName=?2 AND SUBSTRING(a.trainTag, 1, 8) = ?3 AND a.trainNo IN (SELECT b.trainNo FROM Ticket b WHERE b.stationName=?1)")
+	List<Ticket> findByStartPosAndEndPosAndStartDate(String startPos, String endPos, String startDate);
 
 	@Query
 	Ticket findByTrainTagAndStationName(String trainTag, String stationName);

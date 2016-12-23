@@ -1,6 +1,19 @@
 /**
  * 
  */
+function addTicketOrderEvent(){
+	$("#ticket_order_btn").click(function(){
+		ticketOrderParams = {
+			trainTag  : $("#ticket_order_train_tag").val(),
+			startPos  : $("#ticket_order_start_pos").val(),
+			endPos    : $("#ticket_order_end_pos").val(),
+			trainNo   : $("#ticket_order_train_no").val(),
+			queryDate : $("#ticket_order_query_date").val()
+		}
+		changeAnchorPart({ model: "ticket", active:"ticketOrder"});
+	});
+}
+
 function getTicket(columns){
 	var startPos = $.trim($("#query_start_pos").val());
 	var endPos   = $.trim($("#query_end_pos").val());
@@ -12,7 +25,7 @@ function getTicket(columns){
 	}
 	var params = {startPos: startPos, endPos: endPos, startDate:$("#query_start_date").val()};
 	
-	$.get( APP_PATH + "/ticket/getTicket", params, function(list){
+	$.get("/ticket/getTicket", params, function(list){
 		var dataArray = [];
 		for(var i = 0; i < list.length; i++){
 			var ticket = list[i];
@@ -75,7 +88,7 @@ function getTicket(columns){
 
 function viewTrainDetail(trainTag, train){
 	var params = { trainTag:trainTag };
-	$.get(APP_PATH + "/ticket/getTicketByTrainTag", params, function(list){
+	$.get("/ticket/getTicketByTrainTag", params, function(list){
 		var dataArray= [];
 		
 		var columns = [];
@@ -117,45 +130,41 @@ function viewTrainDetail(trainTag, train){
 	});
 }
 
-spa.ticket = (function(){
-	var columns = ["车次", "出发站", "到达站", "出发时间", "到达时间", "历时", "商务座", "特等座", "一等座", "二等座", "高级软卧", "软卧", "硬卧", "软座", "硬座", "无座", "备注"];
+var columns = ["车次", "出发站", "到达站", "出发时间", "到达时间", "历时", "商务座", "特等座", "一等座", "二等座", "高级软卧", "软卧", "硬卧", "软座", "硬座", "无座", "备注"];
+
+function initViews(){
+	var tableHeight = document.body.clientHeight * 0.8;
+	$("#ticket_query_result").css("height", tableHeight);
+	$("#query_start_date").val(util.formatDate(new Date(), 'yyyy-MM-dd'));
+	var datArray = [];
+	util.drawTable({id: "ticket_list_table", columns: columns, datArray: datArray, rowHeight:'45px'});
+}
+
+function initButtons(){
+	$("#query_start_date").click(function() {
+		WdatePicker({ isShowClear:false, readOnly:true });
+	});
 	
-	var initViews = function(){
-		var tableHeight = document.body.clientHeight * 0.8;
-		$("#ticket_query_result").css("height", tableHeight);
-		$("#query_start_date").val(util.formatDate(new Date(), 'yyyy-MM-dd'));
-		var datArray = [];
-		util.drawTable({id: "ticket_list_table", columns: columns, datArray: datArray, rowHeight:'45px'});
+	$("#ticket_query_btn").click(function(){
+		getTicket(columns);
+	});
+	
+	addTicketOrderEvent();
+}
+
+function setDefaultValues(){
+	var startPos = util.getCookie("startPos");
+	var endPos   = util.getCookie("endPos");
+	if(startPos != null){
+		$("#query_start_pos").val(startPos);
 	}
-	
-	var initButtons = function(){
-		$("#query_start_date").click(function() {
-			WdatePicker({ isShowClear:false, readOnly:true });
-		});
-		
-		$("#ticket_query_btn").click(function(){
-			getTicket(columns);
-		});
+	if(endPos   != null){
+		$("#query_end_pos").val(endPos);
 	}
+}
 	
-	var setDefaultValues = function(){
-		var startPos = util.getCookie("startPos");
-		var endPos   = util.getCookie("endPos");
-		if(startPos != null){
-			$("#query_start_pos").val(startPos);
-		}
-		if(endPos   != null){
-			$("#query_end_pos").val(endPos);
-		}
-	}
-	
-	var initModule = function($container){
-		initViews();
-		initButtons();
-		setDefaultValues();	
-	};
-	
-	return {
-		initModule: initModule
-	};
-}());
+$(function(){
+	initViews();
+	initButtons();
+	setDefaultValues();	
+});

@@ -2,7 +2,6 @@ package com.fengyunjie.railway.repository;
 
 import java.util.Date;
 import java.util.List;
-import java.util.Map;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -23,9 +22,8 @@ public interface TicketOrderRepository extends JpaRepository<TicketOrder, Long>{
 	@Query("SELECT a FROM TicketOrder a WHERE a.orderPersonId=?1 AND a.state = 'Y'")
 	List<TicketOrder> findUnfinishedOrder(Long id);
 
-	@Query("SELECT orderNo, timeBuyTicket, startPos, endPos, trainTag, timeTrainStart, SUM(price) AS price FROM TicketOrder"
-		+ " WHERE state=?1 AND timeBuyTicket BETWEEN ?2 AND ?3 AND orderPersonId=?4 GROUP BY orderNo")
-	List<Map<String, Object>> getOrderMainInfo(char state, Date date1, Date addOneDay, Long id);
+	@Query("SELECT a FROM TicketOrder a WHERE state=?1 AND timeBuyTicket BETWEEN ?2 AND ?3 AND orderPersonId=?4")
+	List<TicketOrder> getOrderMainInfo(char state, Date date1, Date addOneDay, Long id);
 
 	@Query("UPDATE TicketOrder SET state='P' WHERE orderPersonId=?1 AND orderNo=?2")
 	void payTicketOrder(Long id, String orderNo);
@@ -33,7 +31,7 @@ public interface TicketOrderRepository extends JpaRepository<TicketOrder, Long>{
 	@Query("UPDATE TicketOrder SET state='N' WHERE id=?1")
 	void refundOrder(Long orderId);
 
-	@Query("SELECT MAX(seatNo) FROM TicketOrder WHERE trainTag=?1 AND seatType=?2")
+	@Query("SELECT COALESCE(MAX(seatNo), 0) FROM TicketOrder WHERE trainTag=?1 AND seatType=?2")
 	int findMaxSeatNo(String trainTag, int i);
 
 	@Query("SELECT MIN(seatNo) FROM TicketOrder WHERE trainTag=?1 AND state='N' AND seatType=?2 AND seatNo NOT IN "

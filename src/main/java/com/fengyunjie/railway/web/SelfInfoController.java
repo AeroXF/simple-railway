@@ -7,9 +7,11 @@ import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.fengyunjie.railway.auth.model.User;
 import com.fengyunjie.railway.auth.service.UserService;
+import com.fengyunjie.railway.utils.SessionUtils;
 
 
 @Controller
@@ -19,8 +21,11 @@ public class SelfInfoController {
 	private UserService userService;
 	
 	@RequestMapping("/index")
-	public String index(){
-		return "users/railway/selfInfo";
+	public ModelAndView index(){
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("users/railway/selfInfo");
+		mv.addObject("name", SessionUtils.getUsername());
+		return mv;
 	}
 	
 	@RequestMapping("/get/selfInfo")

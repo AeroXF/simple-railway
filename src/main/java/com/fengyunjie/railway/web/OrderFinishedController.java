@@ -6,9 +6,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.fengyunjie.railway.model.TicketOrder;
 import com.fengyunjie.railway.service.TicketOrderService;
+import com.fengyunjie.railway.utils.SessionUtils;
 
 @Controller
 @RequestMapping("/orderFinished/")
@@ -17,8 +19,11 @@ public class OrderFinishedController {
 	private TicketOrderService ticketOrderService;
 	
 	@RequestMapping("/index")
-	public String index(){
-		return "users/railway/orderFinished";
+	public ModelAndView index(){
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("users/railway/orderFinished");
+		mv.addObject("name", SessionUtils.getUsername());
+		return mv;
 	}
 	
 	@RequestMapping("/get/orderFinished")
