@@ -84,9 +84,7 @@ function addDivClickEvent(){
 				
 				$(".order-payment").click(function(){
 					var btnOrderNo = $(this).attr("orderno");
-					$("#order-no-input").val(btnOrderNo);
-					spa.shell.changeAnchorPart({model:"ticket", active:"orderResult"});
-					return false;
+					window.location.href = "/ticketOrder/get/orderPayment?orderNo=" + btnOrderNo;
 				});
 			});
 		} else {

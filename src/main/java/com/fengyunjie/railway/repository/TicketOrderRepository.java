@@ -4,12 +4,14 @@ import java.util.Date;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 
 import com.fengyunjie.railway.model.TicketOrder;
 
 public interface TicketOrderRepository extends JpaRepository<TicketOrder, Long>{
 
+	@Modifying
 	@Query("UPDATE TicketOrder SET state='N' WHERE orderPersonId=?1 AND orderNo=?2")
 	void cancelTicketOrder(Long id, String orderNo);
 
@@ -25,9 +27,11 @@ public interface TicketOrderRepository extends JpaRepository<TicketOrder, Long>{
 	@Query("SELECT a FROM TicketOrder a WHERE state=?1 AND timeBuyTicket BETWEEN ?2 AND ?3 AND orderPersonId=?4")
 	List<TicketOrder> getOrderMainInfo(char state, Date date1, Date addOneDay, Long id);
 
+	@Modifying
 	@Query("UPDATE TicketOrder SET state='P' WHERE orderPersonId=?1 AND orderNo=?2")
 	void payTicketOrder(Long id, String orderNo);
 
+	@Modifying
 	@Query("UPDATE TicketOrder SET state='N' WHERE id=?1")
 	void refundOrder(Long orderId);
 

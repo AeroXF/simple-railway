@@ -10,7 +10,6 @@ var queryDate, trainNo, startPos, endPos, startTime, arriveTime,
 	ticketFirstClass, ticketSecondClass, ticketStand;
 
 function initViews(){
-	console.log("AAAA");
 	queryDate = new Date($("#hidden_queryDate").val());
 	
 	trainNo    = $("#hidden_trainNo").val();
@@ -200,8 +199,9 @@ function initButtons(){
 			var form = template("ticket_order_form_template", {ticketOrderList: JSON.stringify(ticketOrderArray)});
 
 			$.post("/ticketOrder/add/ticketOrder", $(form).serialize(), function(data){
-				$("#order-no-input").val(data);
-				spa.shell.changeAnchorPart({model:"ticket", active:"orderResult"});
+				//$("#order-no-input").val(data);
+				//spa.shell.changeAnchorPart({model:"ticket", active:"orderResult"});
+				window.location.href = "/ticketOrder/get/orderPayment?orderNo=" + data;
 			});
 		}); 
 	})

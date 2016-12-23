@@ -9,6 +9,7 @@ import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.poi.hssf.usermodel.HSSFCell;
@@ -103,7 +104,10 @@ public class AdminTrainController {
 	
 	@RequestMapping("/download/train/template")
 	public void downloadTrainTemplate(HttpServletResponse response){
-		String filePath = AdminTrainController.class.getClassLoader().getResource("/files/车次导入模板.xlsx").getPath();
+		
+		String filePath = "classpath:/static/files/车次导入模板.xlsx";
+		System.out.println("filePath: " + filePath);
+		
 		File file = new File(filePath);
 		try(OutputStream out = response.getOutputStream(); InputStream in = new FileInputStream(file)) {
 			response.setContentType("application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8");

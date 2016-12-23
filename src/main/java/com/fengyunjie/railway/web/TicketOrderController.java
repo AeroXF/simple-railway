@@ -21,6 +21,7 @@ import com.fengyunjie.railway.service.ContactsService;
 import com.fengyunjie.railway.service.TicketOrderService;
 import com.fengyunjie.railway.service.TicketService;
 import com.fengyunjie.railway.utils.BizUtils;
+import com.fengyunjie.railway.utils.SessionUtils;
 
 @Controller
 @RequestMapping("/ticketOrder")
@@ -32,7 +33,7 @@ public class TicketOrderController {
 	@Autowired
 	private TicketOrderService ticketOrderService;
 	
-	@RequestMapping("/index")
+	@RequestMapping(value = "/index", method = RequestMethod.POST)
 	public ModelAndView index(HttpSession session, HttpServletRequest request, String trainTag, String queryDate, String trainNo, String startPos, String endPos){
 		if(trainTag != null){
 			session.setAttribute("trainTag", trainTag);
@@ -117,6 +118,7 @@ public class TicketOrderController {
 		mv.addObject("startPos", startPos);
 		mv.addObject("endPos", endPos);
 		mv.addObject("queryDate", queryDate);
+		mv.addObject("name", SessionUtils.getUsername());
 		mv.setViewName("users/ticket/ticketOrder");
 		
 		return mv;
@@ -152,6 +154,7 @@ public class TicketOrderController {
 		request.setAttribute("timeBuyTicket", sdf4.format(list.get(0).getTimeBuyTicket()));
 		request.setAttribute("state", list.get(0).getState());
 		request.setAttribute("orderNo", orderNo);
+		request.setAttribute("name", SessionUtils.getUsername());
 		
 		return "users/ticket/orderResult";
 	}

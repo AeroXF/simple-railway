@@ -4,80 +4,81 @@
 <head>
 	<script th:src="@{/js/users/ticket/ticketOrder.js}"></script>
 </head>
-<body layout:fragment="content">
-
-	<input type="hidden" th:value="${trainNo}"           id="hidden_trainNo"/>
-	<input type="hidden" th:value="${startPos}"          id="hidden_startPos"/>
-	<input type="hidden" th:value="${endPos}"            id="hidden_endPos"/>
-	<input type="hidden" th:value="${queryDate}"         id="hidden_queryDate"/>
-	<input type="hidden" th:value="${ticketFirstClass}"  id="hidden_ticketFirstClass"/>
-	<input type="hidden" th:value="${ticketSecondClass}" id="hidden_ticketSecondClass"/>
-	<input type="hidden" th:value="${ticketStand}"       id="hidden_ticketStand"/>
-	<input type="hidden" th:value="${priceFirstClass}"   id="hidden_priceFirstClass"/>
-	<input type="hidden" th:value="${priceSecondClass}"  id="hidden_priceSecondClass"/>
-	<input type="hidden" th:value="${priceStand}"        id="hidden_priceStand"/>
-	<input type="hidden" th:value="${startTime}"         id="hidden_startTime"/>
-	<input type="hidden" th:value="${arriveTime}"        id="hidden_arriveTime"/>
-	
-	<input type="hidden" value="" id="order-no-input"/>
-	
-	<div id="ticket_order_train_info">
-		<div class="ticket-order-train-info-head">列车信息(以下余票仅供参考)</div>
-		<div class="ticket-order-train-info-body">
-			<div id="ticket_order_train_ticket_title"></div>
-			<hr />
-			<div id="ticket_order_train_ticket_info"></div>
+<body>
+	<div layout:fragment="home_body_content">
+		<input type="hidden" th:value="${trainNo}"           id="hidden_trainNo"/>
+		<input type="hidden" th:value="${startPos}"          id="hidden_startPos"/>
+		<input type="hidden" th:value="${endPos}"            id="hidden_endPos"/>
+		<input type="hidden" th:value="${queryDate}"         id="hidden_queryDate"/>
+		<input type="hidden" th:value="${ticketFirstClass}"  id="hidden_ticketFirstClass"/>
+		<input type="hidden" th:value="${ticketSecondClass}" id="hidden_ticketSecondClass"/>
+		<input type="hidden" th:value="${ticketStand}"       id="hidden_ticketStand"/>
+		<input type="hidden" th:value="${priceFirstClass}"   id="hidden_priceFirstClass"/>
+		<input type="hidden" th:value="${priceSecondClass}"  id="hidden_priceSecondClass"/>
+		<input type="hidden" th:value="${priceStand}"        id="hidden_priceStand"/>
+		<input type="hidden" th:value="${startTime}"         id="hidden_startTime"/>
+		<input type="hidden" th:value="${arriveTime}"        id="hidden_arriveTime"/>
+		
+		<input type="hidden" value="" id="order-no-input"/>
+		
+		<div id="ticket_order_train_info">
+			<div class="ticket-order-train-info-head">列车信息(以下余票仅供参考)</div>
+			<div class="ticket-order-train-info-body">
+				<div id="ticket_order_train_ticket_title"></div>
+				<hr />
+				<div id="ticket_order_train_ticket_info"></div>
+			</div>
 		</div>
-	</div>
-	<div id="ticket_order_passengers_info">
-		<div class="ticket-order-passengers-info-head">乘客信息</div>
-		<div class="ticket-order-passengers-info-body">
-			<!-- <div class="passengers-info-div1">
-				<c:forEach var="item" items="${contacts}" varStatus="status">
-					<c:if test="${status.index%10==0 and status.index!=0}">
+		<div id="ticket_order_passengers_info">
+			<div class="ticket-order-passengers-info-head">乘客信息</div>
+			<div class="ticket-order-passengers-info-body">
+				<!-- <div class="passengers-info-div1">
+					<c:forEach var="item" items="${contacts}" varStatus="status">
+						<c:if test="${status.index%10==0 and status.index!=0}">
+							<br/><br/>
+						</c:if>
+						<span><input type="checkbox" telephone="${item.telephone}" credentialNumber="${item.credentialNumber}"/>${item.username}</span>
+					</c:forEach>
+				</div> -->
+				<div class="passengers-info-div1" th:each="contacts: ${contacts}">
+					<!-- <span th:if="${contacts.index%10==0 and contacts.index!=0}">
 						<br/><br/>
-					</c:if>
-					<span><input type="checkbox" telephone="${item.telephone}" credentialNumber="${item.credentialNumber}"/>${item.username}</span>
-				</c:forEach>
-			</div> -->
-			<div class="passengers-info-div1" th:each="contacts: ${contacts}">
-				<!-- <span th:if="${contacts.index%10==0 and contacts.index!=0}">
-					<br/><br/>
-				</span> -->
-				<span><input type="checkbox" th:attr="telephone=${contacts.telephone}, credentialNumber=${contacts.credentialNumber}" th:value="${contacts.username}"/><font th:text="${contacts.username}">联系人姓名</font></span>
-			</div>
-			<hr />
-			<div class="passengers-info-div2">
-				<table id="ticket_order_table"></table>
-				<button class="button button-rounded button-small" id="add_passengers_btn"><i class="fa fa-plus-circle" aria-hidden="true"></i>新增乘客</button>
-			</div>
-			<hr />
-			<div class="passengers-info-div3">
-				<button class="button button-highlight button-rounded button-small" id="ticket_submit_btn">提交订单</button>
+					</span> -->
+					<span><input type="checkbox" th:attr="telephone=${contacts.telephone}, credentialNumber=${contacts.credentialNumber}" th:value="${contacts.username}"/><font th:text="${contacts.username}">联系人姓名</font></span>
+				</div>
+				<hr />
+				<div class="passengers-info-div2">
+					<table id="ticket_order_table"></table>
+					<button class="button button-rounded button-small" id="add_passengers_btn"><i class="fa fa-plus-circle" aria-hidden="true"></i>新增乘客</button>
+				</div>
+				<hr />
+				<div class="passengers-info-div3">
+					<button class="button button-highlight button-rounded button-small" id="ticket_submit_btn">提交订单</button>
+				</div>
 			</div>
 		</div>
-	</div>
-	
-	<!-- BEGIN: 页面用到的模板文件 -->
-	<script id="ticket_order_form_template" type="text/html">
+		
+		<!-- BEGIN: 页面用到的模板文件 -->
+		<script id="ticket_order_form_template" type="text/html">
 	<form id="add_contact_form">
 	    <input name="ticketOrderList" type="text" value="{{ticketOrderList}}"/>
 	    <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
 	</form>
 	</script>
-	
-	<script id="ticket_order_table_tr_template" type="text/html">
-	<tr class="{{oddEven}}" style="height:40px;">
-		<td>{{count}}</td>
-		<td><select><option value="0" price="{{priceSecondClass}}">二等座({{priceSecondClass}})</option><option value="1" price="{{priceFirstClass}}">一等座({{priceFirstClass}})</option></select></td>
-		<td><select><option>成人票</option></select></td>
-		<td><input type='text' disabled='disabled' readonly='readonly' value="{{username}}"/></td>
-		<td><select disabled='disabled' readonly='readonly'><option>二代身份证</option></select></td>
-		<td><input type='text' disabled='disabled' readonly='readonly' value="{{credentialNumber}}"/></td>
-		<td><input type='text' disabled='disabled' readonly='readonly' value="{{telephone}}"/></td>
-		<td><a class='ticket-delete-link'><i class='fa fa-times-circle' aria-hidden='true' style='color:orange'></i>删除</a></td>
-	</tr>
-	</script>
-	<!-- END: 页面用到的模板文件  -->
+		
+		<script id="ticket_order_table_tr_template" type="text/html">
+		<tr class="{{oddEven}}" style="height:40px;">
+			<td>{{count}}</td>
+			<td><select><option value="0" price="{{priceSecondClass}}">二等座({{priceSecondClass}})</option><option value="1" price="{{priceFirstClass}}">一等座({{priceFirstClass}})</option></select></td>
+			<td><select><option>成人票</option></select></td>
+			<td><input type='text' disabled='disabled' readonly='readonly' value="{{username}}"/></td>
+			<td><select disabled='disabled' readonly='readonly'><option>二代身份证</option></select></td>
+			<td><input type='text' disabled='disabled' readonly='readonly' value="{{credentialNumber}}"/></td>
+			<td><input type='text' disabled='disabled' readonly='readonly' value="{{telephone}}"/></td>
+			<td><a class='ticket-delete-link'><i class='fa fa-times-circle' aria-hidden='true' style='color:orange'></i>删除</a></td>
+		</tr>
+		</script>
+		<!-- END: 页面用到的模板文件  -->
+	</div>
 </body>
 </html>

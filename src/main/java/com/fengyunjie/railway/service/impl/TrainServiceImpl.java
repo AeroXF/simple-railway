@@ -37,10 +37,11 @@ public class TrainServiceImpl implements TrainService {
 			for(int i = 0; i < length; i++){
 				String trainTag = sdf.format(c.getTime()) + trainNo;
 				
-				List<Ticket> ticketList = ticketService.getTicketByTrainTag(trainTag);
-				String str = ticketList.size() > 0 ? 
-						"<a class='ticket-detail-review' traintag='" + trainTag + "'>查看详情</a>" : 
-						"<a class='ticket-generate' traintag='" + trainTag + "'>生成车票</a>";
+				//List<Ticket> ticketList = ticketService.getTicketByTrainTag(trainTag);
+				//String str = ticketList.size() > 0 ? 
+				//		"<a class='ticket-detail-review' traintag='" + trainTag + "'>查看详情</a>" : 
+				//		"<a class='ticket-generate' traintag='" + trainTag + "'>生成车票</a>";
+				String str = "<a class='ticket-detail-review' traintag='" + trainTag + "'>查看详情</a>";
 				tempList.add(str);
 				c.add(Calendar.DAY_OF_MONTH, 1);
 			}

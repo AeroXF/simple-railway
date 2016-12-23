@@ -1,6 +1,8 @@
 /**
  * 
  */	
+var timeId;
+
 function cancelTicket(trainTag){
 	var params = { orderNo:$("#order_no_input").val() };
 	$.get("/ticketOrder/update/cancelTicketOrder", params, function(data){
@@ -9,8 +11,8 @@ function cancelTicket(trainTag){
 }
 
 function initViews(){
-	if(typeof spa.timeId != "undefined"){
-		clearInterval(spa.timeId);
+	if(typeof timeId != "undefined"){
+		clearInterval(timeId);
 	}
 	
 	var state = $("#hidden_ticket_order_state").val();
@@ -25,7 +27,7 @@ function initViews(){
 		var count1 = Math.floor(time/(60*1000));
 		var count2 = Math.floor((time%(60*1000))/1000);
 		
-		spa.timeId = setInterval(function(){
+		timeId = setInterval(function(){
 			count2--;
 			if(count2 < 0){
 				count1--;
@@ -33,7 +35,7 @@ function initViews(){
 			}
 			if(count1 < 0){
 				$("#time_left_span").text("订单已经过期");
-				clearInterval(spa.timeId);
+				clearInterval(timeId);
 				cancelTicket();
 				return;
 			}

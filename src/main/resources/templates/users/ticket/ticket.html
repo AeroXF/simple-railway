@@ -6,15 +6,16 @@
 </head>
 <body>
 	<div layout:fragment="home_body_content">
-		<div id="ticket_order_div" style="display:none;">
+		<form id="ticket_order_form" th:action="@{/ticketOrder/index/}" style="display:none;" method="post">
 			<input type="text" name="trainTag"   id="ticket_order_train_tag"/>
 			<input type="text" name="startPos"   id="ticket_order_start_pos"/>
 			<input type="text" name="endPos"     id="ticket_order_end_pos"/>
 			<input type="text" name="trainNo"    id="ticket_order_train_no"/>
 			<input type="text" name="queryDate"  id="ticket_order_query_date"/>
-		</div>
-		
-		<button id="ticket_order_btn" style="display:none;"></button>
+			
+			<input type="submit" id="ticket_order_btn" style="display:none;"/>
+			<input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
+		</form>
 		
 		<div id="ticket_content">
 			<div id="ticket_query">

@@ -429,7 +429,7 @@ spa.trainAdjust = (function(){
 								map['ticketStand']       			= $(this).find("input:eq(8)").val();
 								params.push(map);
 							});
-							console.log(params);
+							
 							$.get(APP_PATH + "/admin/train/modify/train", {json: JSON.stringify(params)}, function(data){
 								layer.close(index);
 								if(data == "success"){

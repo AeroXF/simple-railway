@@ -1,7 +1,7 @@
 /**
  * 
  */
-function addTicketOrderEvent(){
+/*function addTicketOrderEvent(){
 	$("#ticket_order_btn").click(function(){
 		ticketOrderParams = {
 			trainTag  : $("#ticket_order_train_tag").val(),
@@ -12,7 +12,7 @@ function addTicketOrderEvent(){
 		}
 		changeAnchorPart({ model: "ticket", active:"ticketOrder"});
 	});
-}
+}*/
 
 function getTicket(columns){
 	var startPos = $.trim($("#query_start_pos").val());
@@ -149,7 +149,7 @@ function initButtons(){
 		getTicket(columns);
 	});
 	
-	addTicketOrderEvent();
+	//addTicketOrderEvent();
 }
 
 function setDefaultValues(){

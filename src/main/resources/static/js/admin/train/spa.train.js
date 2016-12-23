@@ -82,12 +82,12 @@ spa.train = (function(){
 		$.get(APP_PATH + "/admin/train/get/trainInfo", {length: len}, function(dataArray){
 			util.drawTable({id:"train_detail_table", columns:columns, datArray:dataArray, rowHeight:'36px', colWidth: '100px'});
 			console.log("2)width: " + $("#train_detail_table").width() + ", height: " + $("#train_detail_table").height());
-			addTableLinkEvent();
+			addDetailViewEvent();
 		});
+		
 	}
 	
 	var initViews = function(){
-		console.log("1)width: " + $(".main-content-body").width() + ", height: " + $(".main-content-body").height());
 		getTrainInfo();
 	};
 	
