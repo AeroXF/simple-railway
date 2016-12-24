@@ -2,7 +2,7 @@
 .main-content-title{ background-color:#2B8FCE; margin-top:20px; border-radius:5px 5px 0 0; height:30px; font-size:13px; line-height:30px; color:#fff; padding-left:20px; font-weight:bold; width:582px; margin:0 auto; }
 
 .register-content-div{ border-left:1px solid #2B8FCE; border-right:1px solid #2B8FCE; border-bottom:1px solid #2B8FCE; width:600px; height:550px; margin:0 auto; }
-.register-content-div p label{ width:180px; text-align:right; display:inline-block; line-height:24px; font-size:14px; }
+.register-content-div p label{ width:160px; text-align:right; display:inline-block; line-height:24px; font-size:14px; }
 
 form input{ height:24px; font-size:14px; width:200px; line-height:24px; margin-bottom:15px; border-radius: 2px; border:1px solid #D5D5D5; }
 form input[type='radio']{ width:30px; height:16px; }

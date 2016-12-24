@@ -2,10 +2,12 @@ package com.fengyunjie.railway.auth.service;
 
 import java.util.Date;
 import java.util.HashSet;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.fengyunjie.railway.auth.model.Role;
 import com.fengyunjie.railway.auth.model.User;
 import com.fengyunjie.railway.auth.repository.RoleRepository;
 import com.fengyunjie.railway.auth.repository.UserRepository;
@@ -25,8 +27,11 @@ public class UserServiceImpl implements UserService {
 	
 	@Override
 	public void save(User user){
+		Role role = roleRepository.findByName("ROLE_USER");
+		Set<Role> set = new HashSet<Role>();
+		set.add(role);
 		user.setPassword(user.getPassword());
-		user.setRoles(new HashSet<>(roleRepository.findAll()));
+		user.setRoles(set);
 		userRepository.save(user);
 	}
 	

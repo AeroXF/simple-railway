@@ -1,20 +1,18 @@
 package com.fengyunjie.railway.web;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.fengyunjie.railway.auth.model.User;
-import com.fengyunjie.railway.auth.service.SecurityService;
 import com.fengyunjie.railway.auth.service.UserService;
-import com.fengyunjie.railway.auth.validator.UserValidator;
 import com.fengyunjie.railway.utils.SessionUtils;
 
 @Controller
@@ -23,41 +21,41 @@ public class UserController {
 	@Autowired
 	private UserService userService;
 	
-	@Autowired
-	private SecurityService securityService;
-	
-	@Autowired
-	private UserValidator userValidator;
-	
 	@RequestMapping(value = "/register", method = RequestMethod.GET)
 	public String registration(){
 		return "register";
 	}
 	
 	@RequestMapping(value="/register", method = RequestMethod.POST)
-	public String registration(@ModelAttribute("userForm") User userForm, BindingResult bindingResult, Model model){
-		userValidator.validate(userForm, bindingResult);
-		
-		if(bindingResult.hasErrors()){
-			return "register";
+	public ModelAndView registration(HttpServletRequest request, User userRegister){
+		User user = userService.findByUsername(userRegister.getNickname());
+		if(user != null){
+			ModelAndView mv = new ModelAndView();
+			mv.addObject("errMsg", "用户名已注册");
+			mv.setViewName("register");
+			return mv;
 		}
 		
-		userService.save(userForm);
+		String password = userRegister.getPassword();
+		userService.save(userRegister);
 		
-		securityService.autoLogin(userForm.getUsername(), userForm.getPasswordConfirm());
+		ModelAndView mv = new ModelAndView("register");
+		mv.addObject("username", userRegister.getUsername());
+		mv.addObject("password", password);
+		mv.addObject("errMsg", "注册成功, 页面跳转中...");
+		mv.addObject("complete", "complete");
 		
-		return "redirect:/home";
+		return mv;
 	}
 	
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public String login(Model model, String error, String logout){
-		if(error != null){
-			model.addAttribute("error", "Your username and password is invalid.");
-		}
-		
-		if(logout != null){
-			model.addAttribute("", "You have been logged out successfully。");
-		}
+		return "login";
+	}
+	
+	@RequestMapping(value = "/login-error", method = RequestMethod.GET)
+	public String loginError(Model model){
+		model.addAttribute("error", true);
 		return "login";
 	}
 	

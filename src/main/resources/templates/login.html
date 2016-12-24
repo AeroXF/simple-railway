@@ -25,9 +25,7 @@
        <div class="login-content-div">
        	   <img  id="login_img" th:src="@{/images/railway.jpg}"/>
        	   
-       	   <!-- <c:if test="${1 == param.login_error}">
-     	       <div id="login_error_tip">用户名或密码错误!</div>
-     	   </c:if> -->
+     	   <div th:if="${error}" id="login_error_tip">用户名或密码错误!</div>
        	   
        	   <form id="login_form" action="login" method="post">
        	   <p>

@@ -18,12 +18,12 @@
 
 <body>
 	<div layout:fragment="content">
-		<input type="hidden" value="${complete}" id="register_complete"/>
+		<input type="hidden" th:value="${complete}" id="register_complete"/>
 	    <div style="display:none;">
 	    	<form id="login_form" action="login" method="post">
-	    		<input name="username" type="text" value="${username}"/>
-	    		<input name="password" type="text" value="${password}"/>
-	    		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+	    		<input name="username" type="text" th:value="${username}"/>
+	    		<input name="password" type="text" th:value="${password}"/>
+	    		<input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
 	    	</form>
 	    </div>
 	    
@@ -33,29 +33,33 @@
 	       </div>
 	       
 	       <div class="register-content-div">
-		       <!-- <div id="register_err_msg">${errMsg}</div> -->
+		       <div id="register_err_msg"></div>
 	       
 	           <form id="register_form" action="register" method="post">
 	               <fieldset style="border: 0px;">
 	                   <p style="margin-top: 30px;">
 	                       <label for="nickname">用户名：</label>
-	      				   <input id="nickname" name="nickname" minlength="4" type="text"/>
+	      				   <input id="nickname" name="nickname" minlength="4" type="text" required="required"/>
+	      				   <label class="error_msg" for="nickname" id="label_nickname"></label>
 	                   </p>
 	                   <p>
 	                       <label for="password">登录密码：</label>
-	      				   <input id="password" name="password" type="password" minlength="4"/>
+	      				   <input id="password" name="password" type="password" minlength="4" required="required"/>
+	      				   <label class="error_msg" for="password" id="label_password"></label>
 	                   </p>
 	                   <p>
 	                       <label for="password_repeat">确认密码：</label>
-	      				   <input id="password_repeat" name="password_repeat" type="password" minlength="4" equalTo="#password"/>
+	      				   <input id="password_repeat" name="password_repeat" type="password" minlength="4" equalTo="#password" required="required"/>
+	      				   <label class="error_msg" for="password_repeat" id="label_password_repeat"></label>
 	                   </p>
 	                   <p>
 	                       <label for="username">姓名：</label>
-	      				   <input id="username" name="username" minlength="2" type="text"/>
+	      				   <input id="username" name="username" minlength="2" type="text" required="required"/>
+	      				   <label class="error_msg" for="username" id="label_username"></label>
 	                   </p>
 	                   <p>
 	                       <label for="gender">性别：</label>
-	      				   <input type="radio" name="gender" id="gender" value="0"/>男
+	      				   <input type="radio" name="gender" id="gender" value="0" checked="checked"/>男
 	      				   <input type="radio" name="gender" id="gender" value="1"/>女
 	                   </p>
 	                   <p>
@@ -72,15 +76,18 @@
 	                   </p>
 	                   <p>
 	                       <label for="credentialNumber">证件号码：</label>
-	      				   <input id="credential_number" name="credentialNumber" minlength="4" maxlength="18" type="text"/>
+	      				   <input id="credential_number" name="credentialNumber" minlength="4" maxlength="18" type="text" required="required"/>
+	      				   <label class="error_msg" for="credentialNumber" id="label_credential_number"></label>
 	                   </p>
 	                   <p>
 	                       <label for="email">邮箱：</label>
-	      				   <input id="email" name="email" minlength="10" type="text"/>
+	      				   <input id="email" name="email" minlength="10" type="text" required="required"/>
+	      				   <label class="error_msg" for="email" id="label_email"></label>
 	                   </p>
 	                   <p>
 	                       <label for="telephone">手机号码：</label>
-	      				   <input id="telephone" name="telephone" minlength="2" type="text"/>
+	      				   <input id="telephone" name="telephone" minlength="2" type="text" required="required"/>
+	      				   <label class="error_msg" for="telephone" id="label_telephone"></label>
 	                   </p>
 	                   <p>
 	                       <label for="customerType">旅客类型：</label>
@@ -92,7 +99,7 @@
 	               
 	               <input type="submit" id="user_register_btn" class="button button-primary button-rounded" value="注册"/>
 	               
-	               <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+	               <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
 	           </form>
 	       </div>
 		</div>

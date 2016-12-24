@@ -20,6 +20,8 @@ import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -103,12 +105,10 @@ public class AdminTrainController {
 	}
 	
 	@RequestMapping("/download/train/template")
-	public void downloadTrainTemplate(HttpServletResponse response){
+	public void downloadTrainTemplate(HttpServletResponse response, HttpServletRequest request) throws IOException{
+		Resource resource = new ClassPathResource("static/files/车次导入模板.xlsx");
+		File file = resource.getFile();
 		
-		String filePath = "classpath:/static/files/车次导入模板.xlsx";
-		System.out.println("filePath: " + filePath);
-		
-		File file = new File(filePath);
 		try(OutputStream out = response.getOutputStream(); InputStream in = new FileInputStream(file)) {
 			response.setContentType("application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8");
 			response.setCharacterEncoding("UTF-8"); 

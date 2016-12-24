@@ -11,8 +11,9 @@ $(function(){
 	});
 	
 	$("#nickname").blur(function(){
-		$.get(APP_PATH + "/rest/getUserByName", {nickname: $("#nickname").val()}, function(data){
+		$.get("/rest/getUserByName", {nickname: $("#nickname").val()}, function(data){
 			if(data == "found"){
+				console.log("AAAA");
 				$("#register_err_msg").text("该用户名已被注册");
 			}else{
 				$("#register_err_msg").text("");
