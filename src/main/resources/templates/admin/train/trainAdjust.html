@@ -19,8 +19,9 @@
 	</div>
 	
 	<div id="upload_file_div" style="display:none;">
-		<form id="upload_file_form" action="admin/train/upload/trainInfo?${_csrf.parameterName}=${_csrf.token}" method="post" enctype="multipart/form-data" target="hiddenIFrame">
+		<form id="upload_file_form" action="../admin/train/upload/trainInfo" method="post" enctype="multipart/form-data" target="hiddenIFrame">
 			<input type="file" name="file" id="upload_file_input" accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"/>
+			<input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
 		</form>
 		<iframe style="display:none;" name="hiddenIFrame" id="hiddenIFrame"></iframe> 
 	</div>

@@ -174,28 +174,33 @@ public class AdminTrainController {
 		String str = getCellValue(cell);
 		train.setStatOrder(Integer.parseInt(str.substring(0, str.indexOf("."))) - 1);
 		//车次
-		train.setTrainNo(getCellValue(row.getCell(1)));
+		String trainNo = getCellValue(row.getCell(1));
+		train.setTrainNo(trainNo);
 		//站点
 		train.setStationName(getCellValue(row.getCell(2)));
 		//开车时间
 		train.setStartTime(getCellValue(row.getCell(3)));
 		//到达时间
 		train.setDeptTime(getCellValue(row.getCell(4)));
-		//一等座价格
-		train.setPriceFirstClass(Double.parseDouble(getCellValue(row.getCell(5))));
-		//一等座票数
-		str = getCellValue(row.getCell(6));
-		train.setTicketFirstClass(Integer.parseInt(str.substring(0, str.indexOf("."))));
-		//二等座价格
-		train.setPriceSecondClass(Double.parseDouble(getCellValue(row.getCell(7))));
-		//二等座票数
-		str = getCellValue(row.getCell(8));
-		train.setTicketSecondClass(Integer.parseInt(str.substring(0, str.indexOf("."))));
-		//站票价格
-		train.setPriceStand(Double.parseDouble(getCellValue(row.getCell(9))));
-		//站票票数
-		str = getCellValue(row.getCell(10));
-		train.setTicketStand(Integer.parseInt(str.substring(0, str.indexOf("."))));
+		
+		//动车
+		if(trainNo.startsWith("D")){
+			//一等座价格
+			train.setPriceFirstClass(Double.parseDouble(getCellValue(row.getCell(9))));
+			//一等座票数
+			str = getCellValue(row.getCell(10));
+			train.setTicketFirstClass(Integer.parseInt(str.substring(0, str.indexOf("."))));
+			//二等座价格
+			train.setPriceSecondClass(Double.parseDouble(getCellValue(row.getCell(11))));
+			//二等座票数
+			str = getCellValue(row.getCell(12));
+			train.setTicketSecondClass(Integer.parseInt(str.substring(0, str.indexOf("."))));
+			//站票价格
+			train.setPriceStand(Double.parseDouble(getCellValue(row.getCell(23))));
+			//站票票数
+			str = getCellValue(row.getCell(24));
+			train.setTicketStand(Integer.parseInt(str.substring(0, str.indexOf("."))));
+		}
 		
 		return train;
 	}
