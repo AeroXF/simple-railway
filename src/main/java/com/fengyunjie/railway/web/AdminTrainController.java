@@ -31,6 +31,8 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fengyunjie.railway.model.Train;
+import com.fengyunjie.railway.quartz.GenerateTicketJob;
+import com.fengyunjie.railway.service.TicketService;
 import com.fengyunjie.railway.service.TrainService;
 
 @Controller
@@ -40,6 +42,8 @@ public class AdminTrainController {
 	private TrainService trainService;
 	@Autowired
 	private ObjectMapper mapper;
+	@Autowired
+	private TicketService ticketService;
 
 	@RequestMapping("/index")
 	public String index(){
@@ -121,6 +125,12 @@ public class AdminTrainController {
 		} catch (Exception e) {
 		    e.printStackTrace();;
 		}
+	}
+	
+	@RequestMapping("/test")
+	public @ResponseBody Object test(){
+		ticketService.generateTicket();
+		return "success";
 	}
 	
 	@RequestMapping(value="/upload/trainInfo", method=RequestMethod.POST)

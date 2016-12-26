@@ -17,4 +17,6 @@ public interface TicketService {
 	public void updateCancelTicket(int seatType, String trainTag, String startPos, String endPos, int size);
 
 	public void addTicket(Ticket ticket);
+
+	public void generateTicket();
 }

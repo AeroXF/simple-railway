@@ -1,5 +1,7 @@
 package com.fengyunjie.railway.service.impl;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.List;
 
 import javax.transaction.Transactional;
@@ -7,11 +9,14 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
+import org.springframework.util.StringUtils;
 
 import com.fengyunjie.railway.model.Ticket;
 import com.fengyunjie.railway.model.TicketOrder;
+import com.fengyunjie.railway.model.Train;
 import com.fengyunjie.railway.repository.TicketOrderRepository;
 import com.fengyunjie.railway.repository.TicketRepository;
+import com.fengyunjie.railway.repository.TrainRepository;
 import com.fengyunjie.railway.service.TicketService;
 
 @Service
@@ -22,6 +27,9 @@ public class TicketServiceImpl implements TicketService {
 	
 	@Autowired
 	private TicketOrderRepository ticketOrderRepository;
+	
+	@Autowired
+	private TrainRepository trainRepository;
 
 	@Override
 	public List<Ticket> getTicket(String startDate, String startPos, String endPos) {
@@ -190,6 +198,119 @@ public class TicketServiceImpl implements TicketService {
 	@Override
 	public void addTicket(Ticket ticket) {
 		ticketRepository.save(ticket);
+	}
+
+	@Override
+	public void generateTicket() {
+		List<Train> list = trainRepository.findAll();
+		
+		Calendar c = Calendar.getInstance();
+		c.add(Calendar.DATE, 20);
+		
+		int year  = c.get(Calendar.YEAR);
+		int month = c.get(Calendar.MONTH) + 1;
+		int date  = c.get(Calendar.DATE);
+		
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmss");
+
+		for(Train train : list){
+			Ticket ticket = new Ticket();
+			//车次
+			ticket.setTrainNo(train.getTrainNo());
+			
+			//站点
+			ticket.setStationName(train.getStationName());
+			
+			//是否同一车次
+			String dateStr  = "" + year + (month < 10 ? "0" + month : month) + (date < 10 ? "0" + date : date);
+			String trainTag = dateStr + train.getTrainNo();
+			ticket.setTrainTag(trainTag);
+			
+			//开车日期
+			if(!StringUtils.isEmpty(train.getStartTime())){
+				String[] timeArray = train.getStartTime().split(":");
+				int hour = Integer.parseInt(timeArray[0]);
+				int minute = Integer.parseInt(timeArray[1]);
+				String startTimeStr = dateStr + (hour < 10 ? "0" + hour : hour) + (minute < 10 ? "0" + minute : minute) + "00";
+				try{
+					ticket.setStartTime(sdf.parse(startTimeStr));
+				}catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+			
+			//停靠时间
+			if(!StringUtils.isEmpty(train.getDeptTime())){
+				String[] timeArray = train.getDeptTime().split(":");
+				int hour = Integer.parseInt(timeArray[0]);
+				int minute = Integer.parseInt(timeArray[1]);
+				String deptTimeStr = dateStr + (hour < 10 ? "0" + hour : hour) + (minute < 10 ? "0" + minute : minute) + "00";
+				try{
+					ticket.setDeptTime(sdf.parse(deptTimeStr));
+				}catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+			
+			//顺序
+			ticket.setStatOrder(train.getStatOrder());
+			
+			//商务座价格
+			ticket.setPriceBusiness(train.getPriceBusiness());
+			
+			//商务座
+			ticket.setTicketBusiness(train.getTicketBusiness());
+			
+			//一等座价格
+			ticket.setPriceFirstClass(train.getPriceFirstClass());
+			
+			//一等座
+			ticket.setTicketFirstClass(train.getTicketFirstClass());
+			
+			//二等座价格
+			ticket.setPriceSecondClass(train.getPriceSecondClass());
+			
+			//二等座
+			ticket.setTicketSecondClass(train.getTicketSecondClass());
+			
+			//高级软卧价格
+			ticket.setPriceAdvancedSoftSleeper(train.getPriceAdvancedSoftSleeper());
+			
+			//高级软卧
+			ticket.setTicketAdvancedSoftSleeper(train.getTicketAdvancedSoftSleeper());
+			
+			//软卧价格
+			ticket.setPriceSoftSleeper(train.getPriceSoftSleeper());
+			
+			//软卧
+			ticket.setTicketSoftSleeper(train.getTicketSoftSleeper());
+			
+			//硬卧价格
+			ticket.setPriceHardSleeper(train.getPriceHardSleeper());
+			
+			//硬卧
+			ticket.setTicketHardSleeper(train.getTicketHardSleeper());
+			
+			//软座价格
+			ticket.setPriceSoftSit(train.getPriceSoftSit());
+			
+			//软座
+			ticket.setTicketSoftSit(train.getTicketSoftSit());
+			
+			//硬座价格
+			ticket.setPriceHardSit(train.getPriceHardSit());
+			
+			//硬座
+			ticket.setTicketHardSit(train.getTicketHardSit());
+			
+			//站票价格
+			ticket.setPriceStand(train.getPriceStand());
+			
+			//站票
+			ticket.setTicketStand(train.getTicketStand());
+			
+			addTicket(ticket);
+		}
 	}
 
 }
