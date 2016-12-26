@@ -31,7 +31,6 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fengyunjie.railway.model.Train;
-import com.fengyunjie.railway.quartz.GenerateTicketJob;
 import com.fengyunjie.railway.service.TicketService;
 import com.fengyunjie.railway.service.TrainService;
 
@@ -195,6 +194,33 @@ public class AdminTrainController {
 		
 		//动车
 		if(trainNo.startsWith("D")){
+			//一等座价格
+			train.setPriceFirstClass(Double.parseDouble(getCellValue(row.getCell(9))));
+			//一等座票数
+			str = getCellValue(row.getCell(10));
+			train.setTicketFirstClass(Integer.parseInt(str.substring(0, str.indexOf("."))));
+			//二等座价格
+			train.setPriceSecondClass(Double.parseDouble(getCellValue(row.getCell(11))));
+			//二等座票数
+			str = getCellValue(row.getCell(12));
+			train.setTicketSecondClass(Integer.parseInt(str.substring(0, str.indexOf("."))));
+			//站票价格
+			train.setPriceStand(Double.parseDouble(getCellValue(row.getCell(23))));
+			//站票票数
+			str = getCellValue(row.getCell(24));
+			train.setTicketStand(Integer.parseInt(str.substring(0, str.indexOf("."))));
+		}  //高铁 
+		else if (trainNo.startsWith("G")){
+			//商务座价格
+			train.setPriceBusiness(Double.parseDouble(getCellValue(row.getCell(5))));
+			//商务座票数
+			str = getCellValue(row.getCell(6));
+			train.setTicketBusiness(Integer.parseInt(str.substring(0, str.indexOf("."))));
+			//特等座价格
+			train.setPriceSpecial(Double.parseDouble(getCellValue(row.getCell(7))));
+			//特等座票数
+			str = getCellValue(row.getCell(8));
+			train.setTicketBusiness(Integer.parseInt(str.substring(0, str.indexOf("."))));
 			//一等座价格
 			train.setPriceFirstClass(Double.parseDouble(getCellValue(row.getCell(9))));
 			//一等座票数
