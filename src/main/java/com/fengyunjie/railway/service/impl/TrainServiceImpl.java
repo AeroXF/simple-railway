@@ -27,8 +27,16 @@ public class TrainServiceImpl implements TrainService {
 	private TicketService ticketService;
 
 	@Override
-	public List<List<String>> getTrainInfo(int length) {
-		List<String> trainList = trainRepository.getAllTrainNo();
+	public List<List<String>> getTrainInfo(int length, String queryTrainNo) {
+		List<String> trainList = new ArrayList<String>();
+		if(StringUtils.isEmpty(queryTrainNo)){
+			trainList = trainRepository.getAllTrainNo();
+		} else {
+			int count = trainRepository.countTrainNo(queryTrainNo);
+			if(count > 0){
+				trainList.add(queryTrainNo);
+			}
+		}
 		List<List<String>> resultList = new ArrayList<List<String>>();
 		
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");

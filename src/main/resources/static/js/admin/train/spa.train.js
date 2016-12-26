@@ -70,7 +70,7 @@ spa.train = (function(){
 		});
 	};
 	
-	var getTrainInfo = function(){
+	var getTrainInfo = function(trainNo){
 		var columns = ["车次"];
 		
 		var date = new Date();
@@ -78,8 +78,14 @@ spa.train = (function(){
 		for(var i = 0; i < len; i++){
 			columns.push(util.addDay(date, i));
 		}
+		
+		var params = {};
+		params['length'] = len;
+		if(trainNo){
+			params['trainNo'] = trainNo;
+		}
 
-		$.get(APP_PATH + "/admin/train/get/trainInfo", {length: len}, function(dataArray){
+		$.get(APP_PATH + "/admin/train/get/trainInfo", params, function(dataArray){
 			util.drawTable({id:"train_detail_table", columns:columns, datArray:dataArray, rowHeight:'36px', colWidth: '100px'});
 			console.log("2)width: " + $("#train_detail_table").width() + ", height: " + $("#train_detail_table").height());
 			addDetailViewEvent();
@@ -98,6 +104,12 @@ spa.train = (function(){
 		
 		$("#minus_train_detail_table_length").click(function(){
 			
+		});
+		
+		$("#train_search_btn").click(function(data){
+			var trainNo = $.trim($("#train_search").val());
+
+			getTrainInfo(trainNo);
 		});
 	};
 	

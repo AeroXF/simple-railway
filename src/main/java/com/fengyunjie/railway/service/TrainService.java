@@ -5,7 +5,7 @@ import java.util.List;
 import com.fengyunjie.railway.model.Train;
 
 public interface TrainService {
-	public List<List<String>> getTrainInfo(int length);
+	public List<List<String>> getTrainInfo(int length, String trainNo);
 
 	public void addTicketByTrainTag(String trainTag, String trainNo);
 

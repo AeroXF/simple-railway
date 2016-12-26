@@ -22,10 +22,12 @@
 #left_second span.active{ background-color:#FFF; }
 #left_second div{ height:60px; line-height:60px; font-weight:bold; padding-left:20px; background-color:#D9DEE4; }
 
-.main-content-head{ width:90%; margin-left:20px; height:60px; padding-top:10px; }
+.main-content-head{ width:90%; margin-left:40px; height:60px; padding-top:10px; }
 .main-content-body{ width:95%; margin:0 auto; }
-#train_search{ margin-left:80px; height:36px; line-height:36px; border:3px solid #B0C4DE; width:491px; font-size:14px; font-family:SongTi; }
-#train_search_btn{ height:42px; width:100px; font-size:15px; background-color:#B0C4DE; color:#FFF; border:none; border-bottom:2px solid #B0C4DE; margin-left:-6px; }
+.train_no_query_input_span{ width:491px; display:inline-block; border:1px solid #B0C4DE; }
+#train_search{ line-height:36px; width:100%; font-size:14px; font-family:SongTi; border:none; }
+.train_no_query_btn_span{ width:100px; display:inline-block; margin-left:-8px; }
+#train_search_btn{ height:38px; width:100%; font-size:15px; background-color:#B0C4DE; color:#FFF; border:2px solid #B0C4DE; }
 #train_search_btn:hover{ cursor:pointer; }
 
 #minus_train_detail_table_length{ margin-left:10px; }

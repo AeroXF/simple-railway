@@ -55,8 +55,8 @@ public class AdminTrainController {
 	}
 	
 	@RequestMapping("/get/trainInfo")
-	public @ResponseBody Object getTrainInfo(int length){
-		List<List<String>> list = trainService.getTrainInfo(length);
+	public @ResponseBody Object getTrainInfo(int length, String trainNo){
+		List<List<String>> list = trainService.getTrainInfo(length, trainNo);
 		return list;
 	}
 	

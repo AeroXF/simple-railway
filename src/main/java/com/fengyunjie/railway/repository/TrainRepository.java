@@ -11,6 +11,9 @@ public interface TrainRepository extends JpaRepository<Train, Long>{
 
 	@Query("SELECT DISTINCT trainNo FROM Train")
 	List<String> getAllTrainNo();
+	
+	@Query("SELECT count(*) FROM Train WHERE trainNo = ?1")
+	int countTrainNo(String trainNo);
 
 	@Query
 	List<Train> findByTrainNo(String trainNo);
