@@ -220,7 +220,7 @@ public class AdminTrainController {
 			train.setPriceSpecial(Double.parseDouble(getCellValue(row.getCell(7))));
 			//特等座票数
 			str = getCellValue(row.getCell(8));
-			train.setTicketBusiness(Integer.parseInt(str.substring(0, str.indexOf("."))));
+			train.setTicketSpecial(Integer.parseInt(str.substring(0, str.indexOf("."))));
 			//一等座价格
 			train.setPriceFirstClass(Double.parseDouble(getCellValue(row.getCell(9))));
 			//一等座票数

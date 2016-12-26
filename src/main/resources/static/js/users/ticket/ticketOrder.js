@@ -18,9 +18,13 @@ function initViews(){
 	startTime  = $("#hidden_startTime").val();
 	arriveTime = $("#hidden_arriveTime").val();
 	
+	priceBusiness     = $("#hidden_priceBusiness").val();
+	priceSpecial      = $("#hidden_priceSpecial").val();
 	priceFirstClass   = $("#hidden_priceFirstClass").val();
 	priceSecondClass  = $("#hidden_priceSecondClass").val();
 	priceStand        = $("#hidden_priceStand").val();
+	ticketBusiness    = $("#hidden_ticketBusiness").val();
+	ticketSpecial     = $("#hidden_ticketSpecial").val();
 	ticketFirstClass  = $("#hidden_ticketFirstClass").val();
 	ticketSecondClass = $("#hidden_ticketSecondClass").val();
 	ticketStand       = $("#hidden_ticketStand").val();
@@ -30,14 +34,23 @@ function initViews(){
 	
 	console.log("trainNo: " + trainNo);
 	
-	if(trainNo.startsWith("D")){
-		var str1 = "<span>" + $("#hidden_queryDate").val() + "(" + mapWeekDay[queryDate.getDay()] + ")</span><span>" + trainNo + "次</span><span>" + 
-			startPos + "站(" + startTime + ")开 - " + endPos + "站(" + arriveTime + "到)</span>";
-		$("#ticket_order_train_ticket_title").append(str1);
-		
-		var str2 = "<span>一等座(<font class='money'>¥" + priceFirstClass + "</font>)" + ticketFirstClass + "张</span>"
+	var str1 = "<span>" + $("#hidden_queryDate").val() + "(" + mapWeekDay[queryDate.getDay()] + ")</span><span>" + trainNo + "次</span><span>" + 
+		startPos + "站(" + startTime + ")开 - " + endPos + "站(" + arriveTime + "到)</span>";
+	$("#ticket_order_train_ticket_title").append(str1);
+	
+	if(trainNo.startsWith("D")){		
+		var str2 = 
+			  "<span>一等座(<font class='money'>¥" + priceFirstClass + "</font>)" + ticketFirstClass + "张</span>"
 			+ "<span>二等座(<font class='money'>¥" + priceSecondClass + "</font>)" + ticketSecondClass + "张</span>"
-			+ "<span>站票(<font class='money'>¥" + priceStand + "</font>)" + ticketStand + "张</span>";
+			+ "<span>站票(<font class='money'>¥"  + priceStand + "</font>)" + ticketStand + "张</span>";
+		$("#ticket_order_train_ticket_info").append(str2);
+	} else if(trainNo.startsWith("G")){
+		var str2 = 
+			  "<span>商务座(<font class='money'>¥" + priceBusiness + "</font>)" + ticketBusiness + "张</span>"
+			+ "<span>特等座(<font class='money'>¥" + priceSpecial + "</font>)" + ticketSpecial + "张</span>"
+			+ "<span>一等座(<font class='money'>¥" + priceFirstClass + "</font>)" + ticketFirstClass + "张</span>"
+			+ "<span>二等座(<font class='money'>¥" + priceSecondClass + "</font>)" + ticketSecondClass + "张</span>"
+			+ "<span>站票(<font class='money'>¥"  + priceStand + "</font>)" + ticketStand + "张</span>";
 		$("#ticket_order_train_ticket_info").append(str2);
 	}
 	util.drawTable({id:"ticket_order_table", columns:ticketOrderColumns, datArray:null, rowHeight:'40px'});

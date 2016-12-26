@@ -261,6 +261,12 @@ public class TicketServiceImpl implements TicketService {
 			//商务座
 			ticket.setTicketBusiness(train.getTicketBusiness());
 			
+			//特等座价格
+			ticket.setPriceSpecial(train.getPriceSpecial());
+			
+			//特等座
+			ticket.setTicketSpecial(train.getTicketSpecial());
+			
 			//一等座价格
 			ticket.setPriceFirstClass(train.getPriceFirstClass());
 			

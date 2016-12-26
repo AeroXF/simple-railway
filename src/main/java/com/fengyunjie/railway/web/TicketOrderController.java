@@ -52,36 +52,48 @@ public class TicketOrderController {
 		List<Ticket> list = ticketService.getTicketByTrainTag(trainTag);
 		
 		SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
+		
+		Integer orderStart = 0, 						//起始站点标记
+			    orderEnd   = 0,						//终到站点标记
+			    ticketBusiness    = 10000,			//商务座票数
+			    ticketSpecial     = 10000,			//特等座票数
+			    ticketFirstClass  = 10000,			//一等座票数
+			    ticketSecondClass = 10000,			//二等座票数
+			    ticketStand       = 10000;			//无座票数
+		Double  priceBusinessStart    = 0.0,
+			    priceBusinessEnd      = 0.0,
+			    priceSpecialStart     = 0.0,
+			    priceSpecialEnd       = 0.0,
+		        priceFirstClassStart  = 0.0,  
+			    priceFirstClassEnd    = 0.0,
+			    priceSecondClassStart = 0.0, 
+			    priceSecondClassEnd   = 0.0,
+			    priceStandStart		  = 0.0,
+			    priceStandEnd 	 	  = 0.0;
+		
+		for(Ticket ticket : list){
+			if(ticket.getStationName().equals(startPos)){
+				orderStart = ticket.getStatOrder();
+				priceFirstClassStart  = ticket.getPriceFirstClass();
+				priceSecondClassStart = ticket.getPriceSecondClass();
+				priceStandStart       = ticket.getPriceStand();
+				priceBusinessStart    = ticket.getPriceBusiness();
+				priceSpecialStart     = ticket.getPriceSpecial();
+				request.setAttribute("startTime", sdf.format(ticket.getStartTime()));
+			}
+			if(ticket.getStationName().equals(endPos)){
+				orderEnd = ticket.getStatOrder();
+				priceFirstClassEnd  = ticket.getPriceFirstClass();
+				priceSecondClassEnd = ticket.getPriceSecondClass();
+				priceStandEnd       = ticket.getPriceStand();
+				priceBusinessEnd    = ticket.getPriceBusiness();
+				priceSpecialEnd     = ticket.getPriceSpecial();
+				request.setAttribute("arriveTime", sdf.format(ticket.getDeptTime()));
+			}
+		}
+		
 		//动车
 		if(trainNo.startsWith("D")){
-			int    orderStart = 0, 
-				   orderEnd   = 0,
-				   ticketFirstClass  = 10000,
-				   ticketSecondClass = 10000,
-				   ticketStand       = 10000;
-			double priceFirstClassStart  = 0,  
-				   priceFirstClassEnd    = 0,
-				   priceSecondClassStart = 0, 
-				   priceSecondClassEnd   = 0,
-				   priceStandStart		 = 0,
-				   priceStandEnd 	 	 = 0;
-			for(Ticket ticket : list){
-				if(ticket.getStationName().equals(startPos)){
-					orderStart = ticket.getStatOrder();
-					priceFirstClassStart  = ticket.getPriceFirstClass();
-					priceSecondClassStart = ticket.getPriceSecondClass();
-					priceStandStart       = ticket.getPriceStand();
-					request.setAttribute("startTime", sdf.format(ticket.getStartTime()));
-				}
-				if(ticket.getStationName().equals(endPos)){
-					orderEnd = ticket.getStatOrder();
-					priceFirstClassEnd  = ticket.getPriceFirstClass();
-					priceSecondClassEnd = ticket.getPriceSecondClass();
-					priceStandEnd       = ticket.getPriceStand();
-					request.setAttribute("arriveTime", sdf.format(ticket.getDeptTime()));
-				}
-			}
-			
 			for(Ticket ticket : list){
 				if(ticket.getStatOrder() <= orderEnd && ticket.getStatOrder() >= orderStart){
 					int ticketFirstClassCurrent  = ticket.getTicketFirstClass();
@@ -107,6 +119,47 @@ public class TicketOrderController {
 				request.setAttribute("priceFirstClass",  priceFirstClassEnd  - priceFirstClassStart);
 				request.setAttribute("priceSecondClass", priceSecondClassEnd - priceSecondClassStart);
 				request.setAttribute("priceStand",       priceStandEnd       - priceStandStart);
+			}
+		} //高铁
+		else if(trainNo.startsWith("G")){
+			for(Ticket ticket : list){
+				if(ticket.getStatOrder() <= orderEnd && ticket.getStatOrder() >= orderStart){
+					int ticketFirstClassCurrent  = ticket.getTicketFirstClass();
+					int ticketSecondClassCurrent = ticket.getTicketSecondClass();
+					int ticketStandCurrent       = ticket.getTicketStand();
+					int ticketBusinessCurrent    = ticket.getTicketBusiness();
+					int ticketSpecialCurrent     = ticket.getTicketSpecial();
+					
+					if(ticketFirstClassCurrent < ticketFirstClass){
+						ticketFirstClass = ticketFirstClassCurrent;
+					}
+					if(ticketSecondClassCurrent < ticketSecondClass){
+						ticketSecondClass = ticketSecondClassCurrent;
+					}
+					if(ticketStandCurrent < ticketStand){
+						ticketStand = ticketStandCurrent;
+					}
+					if(ticketBusinessCurrent < ticketBusiness){
+						ticketBusiness = ticketBusinessCurrent;
+					}
+					if(ticketSpecialCurrent < ticketSpecial){
+						ticketSpecial = ticketSpecialCurrent;
+					}
+				}
+			}
+			
+			request.setAttribute("ticketFirstClass", ticketFirstClass);
+			request.setAttribute("ticketSecondClass", ticketSecondClass);
+			request.setAttribute("ticketStand", ticketStand);
+			request.setAttribute("ticketBusiness", ticketBusiness);
+			request.setAttribute("ticketSpecial", ticketSpecial);
+			
+			if(orderEnd > orderStart){
+				request.setAttribute("priceFirstClass",  priceFirstClassEnd  - priceFirstClassStart);
+				request.setAttribute("priceSecondClass", priceSecondClassEnd - priceSecondClassStart);
+				request.setAttribute("priceStand",       priceStandEnd       - priceStandStart);
+				request.setAttribute("priceSpecial",     priceSpecialEnd     - priceSpecialStart);
+				request.setAttribute("priceBusiness",    priceBusinessEnd    - priceBusinessStart);
 			}
 		}
 		

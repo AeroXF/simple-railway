@@ -486,6 +486,13 @@ spa.trainAdjust = (function(){
 				}
 			});
 		});
+		
+		$("#test_btn").click(function(){
+			$.get(APP_PATH + "/admin/train/test", function(data){
+				console.log(data);
+			});
+		});
+		
 	};
 	
 	var initModule = function($container){
