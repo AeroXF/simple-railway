@@ -36,19 +36,11 @@
 		<div id="ticket_order_passengers_info">
 			<div class="ticket-order-passengers-info-head">乘客信息</div>
 			<div class="ticket-order-passengers-info-body">
-				<!-- <div class="passengers-info-div1">
-					<c:forEach var="item" items="${contacts}" varStatus="status">
-						<c:if test="${status.index%10==0 and status.index!=0}">
-							<br/><br/>
-						</c:if>
-						<span><input type="checkbox" telephone="${item.telephone}" credentialNumber="${item.credentialNumber}"/>${item.username}</span>
-					</c:forEach>
-				</div> -->
-				<div class="passengers-info-div1" th:each="contacts: ${contacts}">
-					<!-- <span th:if="${contacts.index%10==0 and contacts.index!=0}">
-						<br/><br/>
-					</span> -->
-					<span><input type="checkbox" th:attr="telephone=${contacts.telephone}, credentialNumber=${contacts.credentialNumber}" th:value="${contacts.username}"/><font th:text="${contacts.username}">联系人姓名</font></span>
+				<div class="passengers-info-div1">
+					<span th:each="contacts: ${contacts}">
+						<input type="checkbox" th:attr="telephone=${contacts.telephone}, credentialNumber=${contacts.credentialNumber}" th:value="${contacts.username}"/>
+						<font th:text="${contacts.username}">联系人姓名</font>
+					</span>
 				</div>
 				<hr />
 				<div class="passengers-info-div2">

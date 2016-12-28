@@ -106,13 +106,14 @@ hr{ border: 1px dashed #bbb; }
 #ticket_order_passengers_info font{ line-height:32px; }
 .ticket-order-train-info-head{ background-color:#2B8FCE; border-radius:6px 6px 0 0; height:36px; font-size:13px; line-height:36px; color:#fff; padding-left:20px; font-weight:bold; width:1282px; }
 .ticket-order-train-info-body{ border-left:1px solid #2B8FCE; border-right:1px solid #2B8FCE; border-bottom:1px solid #2B8FCE; width:1300px; background-color:#EEF1F8; padding-top:5px; padding-bottom:5px; }
-#ticket_order_train_ticket_title{ margin-left:10px; font-weight:bold; line-height:40px; font-size:16px; }
+#ticket_order_train_ticket_title{ margin-left:10px; font-weight:bold; line-height:40px; font-size:14px; }
 .ticket-order-passengers-info-head{ background-color:#2B8FCE; border-radius:6px 6px 0 0; height:36px; font-size:13px; line-height:36px; color:#fff; padding-left:20px; font-weight:bold; width:1282px; }
 .ticket-order-passengers-info-body{ border-left:1px solid #2B8FCE; border-right:1px solid #2B8FCE; border-bottom:1px solid #2B8FCE; width:1300px; background-color:#FFF; padding-top:5px; padding-bottom:5px; }
+.passengers-info-div1{ font-size:13px; }
 .passengers-info-div1, .passengers-info-div2, .passengers-info-div3{ padding:10px; }
 #add_passengers_btn, #ticket_submit_btn{ margin-top:10px; width:130px; }
 .passengers-info-div1 span { width:80px; display:inline-block; text-align:center; }
-#ticket_order_train_ticket_info{ margin-left:10px; }
+#ticket_order_train_ticket_info{ margin-left:10px; font-size:13px; }
 #ticket_order_train_ticket_title span{ margin-right:20px; }
 #ticket_order_train_ticket_info span{ margin-right:20px; }
 #ticket_order_train_ticket_info font{ color:orange; font-weight:bold; }

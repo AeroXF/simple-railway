@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>页面禁止访问</title>
+
+	<script type="text/javascript" th:src="@{/3rdparty/jquery/jquery.min.js}"></script>
+	<script type="text/javascript">
+		function gotoLoginPage(){
+			window.location.href = "/login";
+		}
+	
+		$(function(){
+			var count = 5;
+			var timeId = setInterval(function(){
+				$("#time_left_span").text(--count);
+				if(count == 0){
+					clearInterval(timeId);
+					gotoLoginPage();
+				}
+			}, 1000);
+		});
+	</script>
+</head>
+<body>
+	抱歉，页面出错了，即将返回登陆页面...<span id="time_left_span">5</span>
+</body>
+</html>

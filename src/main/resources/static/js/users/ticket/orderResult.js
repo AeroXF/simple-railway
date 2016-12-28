@@ -19,6 +19,7 @@ function initViews(){
 	
 	if(state == 'P'){
 		$("#ticket_order_warning_div").empty().append("<span id='time_left_span'>订单支付完成</span>");
+		$("#pay_online_btn").hide();
 	}else if(state == 'Y'){
 		var date1 = new Date($("#hidden_time_buy_ticket").val());
 		var date2 = new Date();

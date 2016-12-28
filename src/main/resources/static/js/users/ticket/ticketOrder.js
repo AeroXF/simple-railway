@@ -72,6 +72,8 @@ function appendTicketTableRow(data){
 	data.oddEven = count%2==0?"odd":"even";
 	data.count   = count+1;
 	var html = template("ticket_order_table_tr_template", data);
+
+	
 	$("#ticket_order_table tbody").append(html);
 	
 	$("#ticket_order_table tbody tr.even").css("background-color", "#f1f1f1");
@@ -159,7 +161,7 @@ function initButtons(){
 				priceSecondClass:priceSecondClass,
 				credentialNumber:$(this).attr("credentialNumber"),
 				telephone:$(this).attr("telephone"),
-				username:$(this).parent().text()
+				username:$(this).val()
 			}
 			appendTicketTableRow(data);
 			addDeleteEvent();
@@ -191,6 +193,8 @@ function initButtons(){
 		layer.confirm('确认提交订单?', {icon: 3, title:'提交订单'}, function(index){
 			layer.close(index);
 			var ticketOrderArray = [];
+			var selected = true;
+			
 			$("#ticket_order_table tbody tr").each(function(index){
 				var data = {
 					trainNo: trainNo,
@@ -204,8 +208,16 @@ function initButtons(){
 					price: $(this).find("td:eq(1) select option:selected").attr("price"),
 					timeTrainStart: startTime
 				}
+				if($.trim(data.custName) == ""){
+					selected = false;
+				}
 				ticketOrderArray.push(data);
 			});
+			
+			if(selected == false){
+				layer.alert("请至少选择一个联系人", {icon:2});
+				return;
+			}
 			
 			console.log(ticketOrderArray);
 			
