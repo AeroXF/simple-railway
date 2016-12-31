@@ -160,4 +160,10 @@ public class TicketOrderServiceImpl implements TicketOrderService {
 		ticketService.updateCancelTicket(order.getSeatType(), order.getTrainTag(), order.getStartPos(), order.getEndPos(), 1);
 	}
 
+	@Override
+	public List<TicketOrder> getTicketOrderByTrainTag(String trainTag) {
+		List<TicketOrder> list = ticketOrderRepository.findTicketOrderByTrainTag(trainTag);
+		return list;
+	}
+
 }

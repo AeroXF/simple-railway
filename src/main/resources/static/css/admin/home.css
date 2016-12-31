@@ -36,7 +36,7 @@
 #train_detail_table .ticket-generate:hover, #train_detail_table .ticket-detail-review:hover{ cursor:pointer; text-decoration:underline; }
 
 #add_train_btn, #del_train_btn, #modify_train_btn{ width:60px; }
-#import_train_btn, #export_template_btn{ width:80px; }
+#import_train_btn, #export_template_btn, #ticket_generate_btn{ width:80px; }
 #train-content hr{ height:2px; border:none; border-top:1px dashed #BBB; }
 .add-train-title, .add-train-seat-type{ margin-top:10px; margin-left:10px; font-size:13px; line-height:30px; } 
 .add-station-div{ margin-top:10px; margin-left:10px; font-size:13px; height:30px; }

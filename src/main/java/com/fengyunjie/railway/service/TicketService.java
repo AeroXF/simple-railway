@@ -1,6 +1,7 @@
 package com.fengyunjie.railway.service;
 
 import java.util.List;
+import java.util.Map;
 
 import com.fengyunjie.railway.model.Ticket;
 import com.fengyunjie.railway.model.TicketOrder;
@@ -19,4 +20,6 @@ public interface TicketService {
 	public void addTicket(Ticket ticket);
 
 	public void generateTicket();
+
+	public Map<String, Object> generateCertainTicket(String trainNo, String trainTag);
 }

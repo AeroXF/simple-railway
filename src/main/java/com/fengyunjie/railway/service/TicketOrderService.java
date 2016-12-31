@@ -32,4 +32,11 @@ public interface TicketOrderService {
 	 * @param orderId ticketOrder表的ID号
 	 */
 	public void refundOrder(Long orderId);
+
+	/**
+	 * 根据车次获得该车次所有订单
+	 * @param trainTag
+	 * @return
+	 */
+	public List<TicketOrder> getTicketOrderByTrainTag(String trainTag);
 }

@@ -15,57 +15,62 @@ spa.train = (function(){
 		addDetailViewEvent();
 	};
 	
+	var viewTrainDetail = function(trainTag){
+		$.get(APP_PATH + "/ticketOrder/get/ticketOrderByTrainTag", {trainTag: trainTag}, function(list){
+			var columns = ['订单号', '车次', 'trainTag', '座位', '类型', '身份证号', '乘客名称', '乘客电话', '购买人ID', '始发站', '终点站',
+				'票价', '购票时间', '开车时间', '状态'];
+
+			var dataArray = [];
+			for(var i=0; i<list.length; i++){
+				dataArray.push([
+				    list[i]['orderNo'], 
+				    list[i]['trainNo'],
+				    list[i]['trainTag'],
+				    list[i]['seatNo'],
+				    list[i]['seatType'],
+				    list[i]['credentialNumber'],
+				    list[i]['custName'],
+				    list[i]['telephone'],
+				    list[i]['orderPersonId'],
+				    list[i]['startPos'],
+				    list[i]['endPos'],
+				    list[i]['timeBuyTicket'],
+				    list[i]['timeTrainStart'],
+				    list[i]['state']
+				]);
+			}
+			layer.open({
+				title: '车次详情',
+				type: 1,
+				area: ['1200px', '600px'],
+				content: "<div><table id='specific_train_detail_table'></table></div>",
+				success: function(layero, index){
+					util.drawTable({id:'specific_train_detail_table', columns:columns, datArray:dataArray});
+				}
+			});
+		});
+	};
+	
 	var addDetailViewEvent = function(){
 		$(".ticket-detail-review").click(function(){
 			var trainTag = $(this).attr('trainTag');
+			var trainNo = trainTag.substr(8, 12);
+			
 			$.get(APP_PATH + "/ticket/getTicketByTrainTag", {trainTag: trainTag}, function(list){
-				var columns = [];
-				if(trainTag[8] == "D"){
-					columns = ['序号', '车次', '站点', '开车时间', '到达时间', '一等座价格', '一等座票数', '二等座价格', '二等座票数', '站票价格', '站票票数'];
-				}else if(trainTag[8] == "G"){
-					columns = ['序号', '车次', '站点', '开车时间', '到达时间', '商务座价格', '商务座票数', '一等座价格', '一等座票数', '二等座价格', '二等座票数'];
+				if(list.length == 0){
+					var layerIndex = layer.confirm('该车次还未生成, 是否生成该车次车票?', {
+						btn: ['确定', '取消']
+					}, function(){
+						$.get(APP_PATH + "/ticket/generateTicket", {trainNo: trainNo, trainTag: trainTag}, function(data){
+							layer.alert(data.msg);
+							viewTrainDetail(trainTag);
+						}); 
+					}, function(){
+						layer.close(layerIndex);
+					});
+				} else {
+					viewTrainDetail(trainTag);
 				}
-				var dataArray = [];
-				for(var i=0; i<list.length; i++){
-					if(trainTag[8] == "D"){
-						dataArray.push([
-						    list[i]['statOrder'] + 1, 
-						    list[i]['trainNo'],
-						    list[i]['stationName'],
-						    util.formatDate(new Date(list[i]['startTime']), 'yyyy-MM-dd hh:mm'),
-						    util.formatDate(new Date(list[i]['deptTime']), 'yyyy-MM-dd hh:mm'),
-						    list[i]['priceFirstClass'],
-						    list[i]['ticketFirstClass'],
-						    list[i]['priceSecondClass'],
-						    list[i]['ticketSecondClass'],
-						    list[i]['priceStand'],
-						    list[i]['ticketStand']
-						]);
-					}else if(trainTag[8] == "G"){
-						dataArray.push([
-						    list[i]['statOrder'] + 1, 
-						    list[i]['trainNo'],
-						    list[i]['stationName'],
-						    util.formatDate(new Date(list[i]['startTime']), 'yyyy-MM-dd hh:mm'),
-						    util.formatDate(new Date(list[i]['deptTime']), 'yyyy-MM-dd hh:mm'),
-						    list[i]['priceBusiness'],
-						    list[i]['ticketBusiness'],
-						    list[i]['priceFirstClass'],
-						    list[i]['ticketFirstClass'],
-						    list[i]['priceSecondClass'],
-						    list[i]['ticketSecondClass']
-						]);
-					}
-				}
-				layer.open({
-					title: '车次详情',
-					type: 1,
-					area: ['1200px', '600px'],
-					content: "<div><table id='specific_train_detail_table'></table></div>",
-					success: function(layero, index){
-						util.drawTable({id:'specific_train_detail_table', columns:columns, datArray:dataArray});
-					}
-				});
 			});
 		});
 	};

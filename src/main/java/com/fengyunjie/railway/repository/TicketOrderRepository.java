@@ -41,4 +41,7 @@ public interface TicketOrderRepository extends JpaRepository<TicketOrder, Long>{
 	@Query("SELECT MIN(seatNo) FROM TicketOrder WHERE trainTag=?1 AND state='N' AND seatType=?2 AND seatNo NOT IN "
 		+ "(SELECT DISTINCT seatNo FROM TicketOrder WHERE trainTag=?1 AND state='Y' AND seatType=?2)")
 	int findMinRefundedSeatNo(String trainTag, int seatType);
+
+	@Query("SELECT a FROM TicketOrder a WHERE a.trainTag=?1 AND state!='N' ORDER BY a.seatType, a.seatNo")
+	List<TicketOrder> findTicketOrderByTrainTag(String trainTag);
 }

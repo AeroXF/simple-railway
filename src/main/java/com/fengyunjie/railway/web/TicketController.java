@@ -1,6 +1,7 @@
 package com.fengyunjie.railway.web;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -37,4 +38,12 @@ public class TicketController {
 		List<Ticket> list = ticketService.getTicketByTrainTag(trainTag);
 		return list;
 	}
+	
+	@RequestMapping("/generateTicket")
+	public @ResponseBody Object generateTicket(String trainNo, String trainTag){
+		Map<String, Object> map = ticketService.generateCertainTicket(trainNo, trainTag);
+		
+		return map;
+	}
+	
 }

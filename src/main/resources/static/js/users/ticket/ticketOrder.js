@@ -6,8 +6,8 @@ var mapWeekDay = { "0":"周日", "1":"周一", "2":"周二", "3":"周三", "4":"
 var ticketOrderIndex = 1;
 
 var queryDate, trainNo, startPos, endPos, startTime, arriveTime,
-	priceFirstClass, priceSecondClass, priceStand,
-	ticketFirstClass, ticketSecondClass, ticketStand;
+	priceBusiness, priceSpecial, priceFirstClass, priceSecondClass, priceStand,
+	ticketBusiness, ticketSpecial, ticketFirstClass, ticketSecondClass, ticketStand;
 
 function initViews(){
 	queryDate = new Date($("#hidden_queryDate").val());
@@ -58,7 +58,13 @@ function initViews(){
 }
 
 function appendBlankRow(){
-	var html = template("ticket_order_table_tr_template", { oddEven:"odd", count:1, priceFirstClass:priceFirstClass, priceSecondClass:priceSecondClass });
+	var html = "";
+	if(trainNo.startsWith("D")){
+	    html = template("ticket_order_table_tr_template", { oddEven:"odd", count:1, priceFirstClass:priceFirstClass, priceSecondClass:priceSecondClass });
+	}else if(trainNo.startsWith("G")){
+		html = template("ticket_order_gaotie_table_tr_template", { oddEven:"odd", count:1, priceFirstClass:priceFirstClass, priceSecondClass:priceSecondClass, priceBusiness:priceBusiness, priceSpecial:priceSpecial });
+	}
+	
 	$("#ticket_order_table").append(html);
 }
 
@@ -71,8 +77,14 @@ function appendTicketTableRow(data){
 	var count = $("#ticket_order_table tbody").children("tr").length;
 	data.oddEven = count%2==0?"odd":"even";
 	data.count   = count+1;
-	var html = template("ticket_order_table_tr_template", data);
-
+	var html = "";
+	if(trainNo.startsWith("D")){
+		html = template("ticket_order_table_tr_template", data);
+	} else if(trainNo.startsWith("G")){
+		data.priceSpecial = priceSpecial;
+		data.priceBusiness = priceBusiness;
+		html = template("ticket_order_gaotie_table_tr_template", data);
+	}
 	
 	$("#ticket_order_table tbody").append(html);
 	
@@ -224,8 +236,6 @@ function initButtons(){
 			var form = template("ticket_order_form_template", {ticketOrderList: JSON.stringify(ticketOrderArray)});
 
 			$.post("/ticketOrder/add/ticketOrder", $(form).serialize(), function(data){
-				//$("#order-no-input").val(data);
-				//spa.shell.changeAnchorPart({model:"ticket", active:"orderResult"});
 				window.location.href = "/ticketOrder/get/orderPayment?orderNo=" + data;
 			});
 		}); 

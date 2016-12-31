@@ -212,6 +212,13 @@ public class TicketOrderController {
 		return "users/ticket/orderResult";
 	}
 	
+	@RequestMapping(value="/get/ticketOrderByTrainTag")
+	public @ResponseBody Object getTicketOrderByTrainTag(String trainTag){
+		List<TicketOrder> list = ticketOrderService.getTicketOrderByTrainTag(trainTag);
+		
+		return list;
+	}
+	
 	@RequestMapping(value="/add/ticketOrder", method=RequestMethod.POST)
 	public @ResponseBody Object addTicketOrder(HttpServletRequest request, String ticketOrderList){
 		String orderNo = ticketOrderService.addTicketOrder(ticketOrderList);

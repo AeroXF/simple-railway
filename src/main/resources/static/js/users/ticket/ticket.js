@@ -94,6 +94,8 @@ function viewTrainDetail(trainTag, train){
 		var columns = [];
 		if(train.startsWith("D")){
 			columns = ["车次", "站点", "开车时间", "到达时间", "一等座", "二等座", "站票"];
+		} else if(train.startsWith("G")){
+			columns = ["车次", "站点", "开车时间", "到达时间", "商务座", "特等座", "一等座", "二等座", "站票"]
 		}
 		
 		for(var i = 0; i < list.length; i++){
@@ -111,9 +113,15 @@ function viewTrainDetail(trainTag, train){
 			
 			var arr = [];
 			if(train.startsWith("D")){
-				var arr = [
+				arr = [
 				    ticket["trainNo"], ticket["stationName"], util.formatDate(startTime, 'hh:mm'), util.formatDate(deptTime, 'hh:mm'), 
 				    '¥' + ticket["priceFirstClass"], '¥' + ticket["priceSecondClass"], '¥' + ticket["priceStand"]
+				];
+			} else if(train.startsWith("G")){
+				arr = [
+				    ticket["trainNo"], ticket["stationName"], util.formatDate(startTime, 'hh:mm'), util.formatDate(deptTime, 'hh:mm'), 
+				    '¥' + ticket["priceBusiness"], '¥' + ticket["priceSpecial"], '¥' + ticket["priceFirstClass"], '¥' + ticket["priceSecondClass"], 
+				    '¥' + ticket["priceStand"]
 				];
 			}
 			dataArray.push(arr);

@@ -487,11 +487,40 @@ spa.trainAdjust = (function(){
 			});
 		});
 		
-		/*$("#test_btn").click(function(){
-			$.get(APP_PATH + "/admin/train/test", function(data){
-				console.log(data);
+		$("#ticket_generate_btn").click(function(){
+			layer.open({
+				type: 1,
+				area: ['1200px', '600px'],
+				content: template("ticket_generate_template", {}), 
+				success: function(layero, index){
+					$(".ticket_generate_div").css("margin", "5px").css("font-size", "13px");
+					$(".ticket_generate_div input").css("width", "100px").css("height", "24px");
+					$("#ticket_current_generate_btn").css("width", "120px");
+					$(".err-msg-div").css("color", "red").css("font-size", "13px").css("margin", "5px");
+					
+					$("#ticket_current_generate_btn").click(function(){
+						var trainNo = $("#train_no_input").val();
+						var date = $("#train_date_input").val();
+						
+						var trainTag = date.split("-").join("") + trainNo;
+						
+						if($.trim(trainNo) == ""){
+							$(".err-msg-div").html("*请填写想要生成的车次");
+							return;
+						}
+						
+						if($.trim(date) == ""){
+							$(".err-msg-div").html("*请选择生成车票的日期");
+							return;
+						}
+						
+						$.get(APP_PATH + "/ticket/generateTicket", {trainNo: trainNo, trainTag: trainTag}, function(data){
+							$(".err-msg-div").html("*" + data.msg);
+						});
+					});
+				}
 			});
-		});*/
+		});
 		
 	};
 	
