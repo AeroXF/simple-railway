@@ -17,15 +17,30 @@ spa.train = (function(){
 	
 	var viewTrainDetail = function(trainTag){
 		$.get(APP_PATH + "/ticketOrder/get/ticketOrderByTrainTag", {trainTag: trainTag}, function(list){
-			var columns = ['订单号', '车次', 'trainTag', '座位', '类型', '身份证号', '乘客名称', '乘客电话', '购买人ID', '始发站', '终点站',
-				'票价', '购票时间', '开车时间', '状态'];
+			var columns = [
+				//'订单号', 
+				'车次', 
+				//'trainTag', 
+				'座位', 
+				'类型', 
+				'身份证号', 
+				'乘客名称', 
+				'乘客电话', 
+				'购买人ID', 
+				'始发站', 
+				'终点站',
+				'票价', 
+				'购票时间', 
+				'开车时间', 
+				'状态'
+			];
 
 			var dataArray = [];
 			for(var i=0; i<list.length; i++){
 				dataArray.push([
-				    list[i]['orderNo'], 
+				    //list[i]['orderNo'], 
 				    list[i]['trainNo'],
-				    list[i]['trainTag'],
+				    //list[i]['trainTag'],
 				    list[i]['seatNo'],
 				    list[i]['seatType'],
 				    list[i]['credentialNumber'],
