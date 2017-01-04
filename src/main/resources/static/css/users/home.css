@@ -81,7 +81,7 @@ span.home-header-content-right font:first-child { font-weight:200; }
 .modify-contacts-icon,.delete-contacts-icon{ height:20px; line-height:20px; font-size:20px; }
 .modify-contacts-icon:hover,.delete-contacts-icon:hover{ cursor:pointer; }
 .add-contact-div-title{ background-color:#2B8FCE; margin-top:20px; border-radius:5px 5px 0 0; height:30px; font-size:13px; line-height:30px; color:#fff; padding-left:20px; font-weight:bold; width:582px; margin:0 auto; }
-.add-contact-div-body{ width:600px; margin:0 auto; border-left:1px solid #2B8FCE; border-right:1px solid #2B8FCE; border-bottom:1px solid #2B8FCE; padding-bottom:30px; }
+.add-contact-div-body{ width:600px; margin:0 auto; border-left:1px solid #2B8FCE; border-right:1px solid #2B8FCE; border-bottom:1px solid #2B8FCE; padding-bottom:30px; font-size:13px; }
 #add_contact_form{ margin-top:20px; }
 #add_contact_form p{ margin-top:10px; }
 #add_contact_form label{ width:200px; display:inline-block; text-align:right; margin-right:10px; }

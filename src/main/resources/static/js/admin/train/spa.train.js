@@ -34,7 +34,8 @@ spa.train = (function(){
 				    list[i]['orderPersonId'],
 				    list[i]['startPos'],
 				    list[i]['endPos'],
-				    list[i]['timeBuyTicket'],
+				    list[i]['price'],
+				    util.formatDate(new Date(list[i]['timeBuyTicket']), 'yyyy-MM-dd hh:mm:ss'),
 				    list[i]['timeTrainStart'],
 				    list[i]['state']
 				]);
